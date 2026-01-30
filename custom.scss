@@ -1,0 +1,55 @@
+/*-- scss:defaults --*/
+$font-family-sans-serif: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+$presentation-heading-font: 'Inter', sans-serif;
+$code-block-font-size: 0.7em;
+$presentation-font-size-root: 36px;
+
+/*-- scss:rules --*/
+.reveal {
+  .slide-background {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
+  }
+  
+  h1, h2, h3 {
+    color: #00d9ff;
+    text-shadow: 0 0 30px rgba(0, 217, 255, 0.3);
+  }
+  
+  code {
+    background: rgba(0, 217, 255, 0.1);
+    border-radius: 4px;
+    padding: 2px 6px;
+  }
+  
+  pre {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+  }
+  
+  .prompt-box {
+    background: linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(138, 43, 226, 0.1));
+    border-left: 4px solid #00d9ff;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+    font-family: monospace;
+    font-size: 0.8em;
+  }
+  
+  .agent-response {
+    background: rgba(46, 204, 113, 0.1);
+    border-left: 4px solid #2ecc71;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+  }
+  
+  .warning-box {
+    background: rgba(241, 196, 15, 0.1);
+    border-left: 4px solid #f1c40f;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+  }
+}

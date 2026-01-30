@@ -1,0 +1,248 @@
+---
+title: "Agentic Coding"
+subtitle: "From Idea to Proof-of-Concept in One Hour"
+author: "Fabian Spill"
+institute: "COSIMO-IDAI Seminar Series"
+date: "2025-02-13"
+format: revealjs
+---
+
+# Welcome {.center}
+
+## Agentic Coding: From Idea to Proof-of-Concept
+
+::: {.incremental}
+- **Brief overview** of coding agents
+- **Live demonstration** of addressing a *scientific* problem using AI
+- **Example domains**: simulation code, data analysis pipeline
+:::
+
+::: {.notes}
+Welcome everyone. Today we'll see how AI coding agents can accelerate research.
+:::
+
+---
+
+# Part 1: What Are Coding Agents? {.center}
+
+## The Evolution of AI-Assisted Coding
+
+::: {.columns}
+::: {.column width="50%"}
+**Traditional Autocomplete**
+
+- Suggests next few tokens
+- Context-limited
+- You drive everything
+:::
+
+::: {.column width="50%"}
+**Agentic Coding**
+
+- Understands your *intent*
+- Reads/writes multiple files
+- Runs commands, debugs errors
+- Acts as a collaborator
+:::
+:::
+
+---
+
+## Key Insight: Scientific Intent, Not Syntax
+
+::: {.prompt-box}
+❌ "Write a for loop that iterates through the list and calculates the mean"
+:::
+
+::: {.prompt-box}
+✅ "Implement an SIR epidemic model with transmission rate β and recovery rate γ"
+:::
+
+The agent knows how to write loops. **You** know what an SIR model is.
+
+---
+
+## Tools We'll Use Today
+
+| Tool | Purpose |
+|------|---------|
+| **VS Code / Cursor** | IDE with agent integration |
+| **Gemini / Claude** | The underlying LLM |
+| **Python** | Our target language |
+
+::: {.notes}
+These tools are accessible to anyone with basic coding familiarity.
+:::
+
+---
+
+# Part 2: Live Coding — Simulation {.center}
+
+## From Blank Repo to Working Prototype
+
+We'll build a simple epidemiological simulation **from scratch**.
+
+::: {.warning-box}
+**Live Demo Ahead!** 🎬  
+Open `prompts/02_simulation.md` for the prompts we'll use.
+:::
+
+---
+
+## Prompt 1: Project Initialization
+
+::: {.prompt-box}
+"Create a Python project structure for simulating an SIR epidemic model. Include a main simulation script, a module for the model equations, and a visualization script."
+:::
+
+Let's see what the agent produces...
+
+---
+
+## Prompt 2: Implement the Model
+
+::: {.prompt-box}
+"Implement the SIR model differential equations. The model should track Susceptible, Infected, and Recovered populations over time. Use scipy.integrate.odeint for integration."
+:::
+
+---
+
+## Prompt 3: Visualization
+
+::: {.prompt-box}
+"Create a visualization that shows S, I, R curves over time. Add proper labels, legend, and a title. Use a clean, publication-ready style."
+:::
+
+---
+
+## Talking to AI with Scientific Intent
+
+**Effective prompting strategies:**
+
+::: {.incremental}
+1. **State the scientific goal** first, not the implementation
+2. **Use domain terminology** — the model understands SIR, ODE, etc.
+3. **Provide constraints** — "use scipy" or "make it efficient for large N"
+4. **Iterate** — refine based on initial output
+:::
+
+---
+
+# Part 3: Live Coding — Data Analysis {.center}
+
+## Building an Analysis Pipeline
+
+::: {.warning-box}
+**Live Demo!** 🎬  
+Open `prompts/03_analysis.md` for the prompts we'll use.
+:::
+
+---
+
+## Prompt 1: Load and Explore Data
+
+::: {.prompt-box}
+"Load the experimental data from data/measurements.csv. Show me the first few rows, data types, and basic statistics. Identify any missing values or anomalies."
+:::
+
+---
+
+## Prompt 2: Statistical Analysis
+
+::: {.prompt-box}
+"Perform a statistical comparison between the control and treatment groups. Use an appropriate test based on the data distribution. Report the test statistic, p-value, and effect size."
+:::
+
+---
+
+## Prompt 3: Publication Figure
+
+::: {.prompt-box}
+"Create a publication-quality figure comparing the two groups. Include error bars, individual data points, and significance annotations. Save as both PNG and PDF at 300 DPI."
+:::
+
+---
+
+# Part 4: Debugging AI-Generated Code {.center}
+
+## When Things Go Wrong
+
+AI-generated code is not always correct. Common issues:
+
+::: {.incremental}
+- **Hallucinated APIs** — functions that don't exist
+- **Logic errors** — correct syntax, wrong algorithm
+- **Version mismatches** — code for older library versions
+:::
+
+---
+
+## Debugging Strategy
+
+::: {.prompt-box}
+"This code throws [paste error message]. The issue seems to be with [your hypothesis]. Can you fix it?"
+:::
+
+**Key principles:**
+
+1. **Share the error message** — the agent can read stack traces
+2. **Share your hypothesis** — even if wrong, it helps
+3. **Test incrementally** — don't ask for everything at once
+
+---
+
+## Example: Fixing a Real Error
+
+::: {.prompt-box}
+"When I run the simulation with β=0.3 and γ=0.1, I get negative population values. This violates conservation of population. Please check the ODE implementation and fix the issue."
+:::
+
+---
+
+# Wrap-Up {.center}
+
+## What We Covered
+
+::: {.incremental}
+- ✅ Coding agents as scientific collaborators
+- ✅ Prompting with *scientific intent*, not syntax
+- ✅ Building simulation code from scratch
+- ✅ Creating data analysis pipelines
+- ✅ Debugging AI-generated code
+:::
+
+---
+
+## Key Takeaways
+
+1. **You bring domain expertise** — the AI brings coding fluency
+2. **Iterate quickly** — first draft is rarely perfect
+3. **Trust but verify** — always review the generated code
+4. **Scientific problems need scientific prompts**
+
+---
+
+## Resources
+
+- **This repo**: `github.com/[your-org]/COSIMO_IDAI_Agentic_Coding_Tutorial`
+- **Prompts used today**: `prompts/` directory
+- **Example outputs**: `examples/` directory
+
+::: {.notes}
+Materials will be available after the seminar.
+:::
+
+---
+
+## Questions? {.center}
+
+🎤 **Open Discussion**
+
+Networking lunch follows at 12:00!
+
+---
+
+# Thank You! {.center}
+
+Fabian Spill  
+f.spill@bham.ac.uk

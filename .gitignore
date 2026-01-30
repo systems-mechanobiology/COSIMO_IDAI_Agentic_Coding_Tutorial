@@ -1,0 +1,25 @@
+# Temporary or local files
+.DS_Store
+__pycache__/
+*.pyc
+.env
+.venv/
+venv/
+
+# Quarto output
+_output/
+.quarto/
+*_files/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# Results (regenerated during demo)
+# Uncomment if you want to ignore generated results
+# results/*.png
+# results/*.pdf
+
+/.quarto/
+**/*.quarto_ipynb
