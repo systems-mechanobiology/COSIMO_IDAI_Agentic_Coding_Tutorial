@@ -14,8 +14,8 @@ This directory contains the prompts for the live coding demonstrations during th
 | File | Content | Seminar Section |
 |------|---------|-----------------|
 | `01_setup.md` | Initial setup and orientation | Part 1: Intro |
-| `02_simulation.md` | Building simulation code | Part 2: Simulation |
-| `03_analysis.md` | Data analysis pipeline | Part 3: Analysis |
+| `02_simulation.md` | Building the SIR model + **Explain Results** | Part 2: Simulation |
+| `03_analysis.md` | **Real Data Extension** (Fitting model to synthetic data) | Part 3: Analysis |
 
 ## Tips for Live Demo
 

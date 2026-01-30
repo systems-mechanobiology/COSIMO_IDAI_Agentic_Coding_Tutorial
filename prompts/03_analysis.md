@@ -1,115 +1,61 @@
-# Data Analysis Prompts
+# Part 3: SIR Real Data Analysis
 
-These prompts build a data analysis pipeline for experimental data.
-
----
-
-## Pre-Demo Setup
-
-Create a sample dataset before this section (or use the prompt below):
-
-```
-Create a sample experimental dataset in data/measurements.csv.
-It should contain:
-- 50 measurements total
-- Two groups: "control" (n=25) and "treatment" (n=25)
-- A continuous outcome variable "response"
-- Treatment group should have a slightly higher mean (effect size ~0.5)
-- Include some missing values (3-4 NaNs) to make it realistic
-```
+These prompts extend the simulation by comparing it to "real" outbreak data.
 
 ---
 
-## Prompt 3.1: Load and Explore Data
+## Prompt 3.1: Create/Load Real Data
 
 ```
-Load the experimental data from data/measurements.csv.
-Show me:
-- The first few rows
-- Data types for each column
-- Basic statistics (mean, std, count)
-- Any missing values
+Create a synthetic dataset representing "Real World Statistics" for an outbreak.
+- Weeks: 0 to 8
+- Cases: [15, 60, 250, 900, 2800, 4500, 3000, 900, 100]
+- Total Population: 10,000
 
-Provide a brief summary of what you observe.
+Load this into a pandas DataFrame and plot it as scatter points with error bars (assume sqrt(N) error).
 ```
 
-**What to highlight:** The agent provides interpretation, not just code output.
+**What to highlight:** Mixing manual data entry with pandas operations.
 
 ---
 
-## Prompt 3.2: Data Cleaning
+## Prompt 3.2: Fit Simulation to Data
 
 ```
-Handle the missing values in the dataset.
-- Report how many missing values exist and where
-- Use an appropriate strategy (e.g., median imputation or removal)
-- Explain your choice
-- Save the cleaned data to data/measurements_clean.csv
+We want to fit our SIR model to this data.
+Create a function that:
+1. Takes (beta, gamma) as inputs.
+2. Runs the simulation for 60 days.
+3. Interpolates the simulation results to match the "Weekly" data points.
+4. Returns the Sum of Squared Errors (SSE) between model and data.
+
+Then, use `scipy.optimize.minimize` to find the best beta and gamma.
 ```
 
-**What to highlight:** Asking for explanation shows the agent's reasoning.
+**What to highlight:** Complex multi-step reasoning. Bridging "simulation time" (continuous) and "data time" (discrete).
 
 ---
 
-## Prompt 3.3: Statistical Analysis
+## Prompt 3.3: Final Visualization
 
 ```
-Compare the response variable between control and treatment groups.
-- First check for normality (Shapiro-Wilk or similar)
-- Choose an appropriate test based on the data distribution
-- Report: test statistic, p-value, 95% confidence interval, and effect size (Cohen's d)
-- Interpret the results in plain English
+Create a final plot showing:
+1. The "Real Data" as scatter points with error bars.
+2. The "Best Fit Simulation" as a smooth curve.
+3. Display the optimized R0 value (beta/gamma) in the title.
+4. Save as `results/fitted_model.png`.
 ```
 
-**What to highlight:** We specify *what* to do (compare groups) and *how to report* (effect size), but not *which test* — the agent chooses based on data.
+**What to highlight:** The grand finale — combining data and theory.
 
 ---
 
-## Prompt 3.4: Publication-Quality Figure
+## Debugging
 
+If the optimizer fails:
 ```
-Create a publication-quality figure comparing control and treatment groups.
-Include:
-- Box plots or violin plots showing distributions
-- Overlay individual data points (jittered)
-- Error bars showing 95% CI of the mean
-- Significance annotation (star notation: * p<0.05, ** p<0.01, etc.)
-- Clean style: no top/right spines, readable font sizes
-- Save as both results/comparison.png and results/comparison.pdf at 300 DPI
+The optimizer is not converging.
+Try:
+- Providing better initial guesses (beta=0.5, gamma=0.1)
+- Bounding the parameters (0 < beta < 2, 0 < gamma < 1)
 ```
-
-**What to highlight:** Detailed visual requirements produce polished output.
-
----
-
-## Prompt 3.5: Automated Report (if time permits)
-
-```
-Generate a brief analysis report as a markdown file (results/analysis_report.md).
-Include:
-- Summary of the dataset
-- Statistical test results
-- Embedded figure
-- Conclusion statement
-```
-
-**What to highlight:** The agent can produce documentation, not just code.
-
----
-
-## Debugging Prompt (if errors occur)
-
-```
-This analysis failed with [paste error message].
-I expect the code to [describe expected behavior].
-The data shape is [mention if relevant].
-Can you fix this?
-```
-
----
-
-## Notes for Presenter
-
-- Ensure the sample data exists before starting this section
-- If time is short, skip to Prompt 3.3 (statistical analysis) and Prompt 3.4 (figure)
-- The figure prompt usually produces impressive visual output

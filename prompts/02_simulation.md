@@ -73,7 +73,24 @@ Requirements:
 
 ---
 
-## Prompt 2.5: Parameter Sensitivity (if time permits)
+## Prompt 2.5: Explain the Results
+
+```
+Look at the plot `results/sir_simulation.png` (or the code used to generate it).
+Explain what is happening in the simulation.
+- What is the peak number of infected people?
+- When does it occur?
+- Why does the epidemic end?
+```
+
+**What to highlight:** Multimodal capabilities (if using an agent that sees images) or code reasoning. It turns the agent into a tutor.
+
+---
+
+## Prompt 2.6: Real Data Extension (Transition to Part 3)
+
+*Note: In the next section, we will compare this simulation to real data.*
+
 
 ```
 Create a function that runs the SIR model for a range of β values (0.1 to 0.5).
