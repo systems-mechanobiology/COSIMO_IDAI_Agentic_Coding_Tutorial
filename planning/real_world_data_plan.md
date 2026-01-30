@@ -193,6 +193,63 @@ Visualize the uncertainty as a shaded band around the model curve.
 
 ---
 
+## Part 5: Scientific Writing
+
+> Use the AI to synthesize all results into a coherent scientific report.
+
+### Prompt 5.1: Write a Scientific Report
+```
+Write a scientific report summarizing our COVID-19 SIR model analysis.
+
+The report should include:
+
+## 1. Introduction
+- Brief context on the COVID-19 pandemic and Italy's first wave
+- The purpose of this analysis: calibrating an SIR model to real data
+
+## 2. Methods
+- Description of the SIR model equations (S, I, R compartments)
+- Data source: JHU CSSE COVID-19 repository
+- Time period: February 22 – May 31, 2020 (Italy)
+- How "active infections" were estimated from the data
+- Fitting procedure: scipy.optimize.minimize, objective function (SSE)
+
+## 3. Results
+- Present the fitted parameters: β, γ, and R0
+- Include the figure `results/covid_italy_overview.png` showing the data
+- Include the figure `results/covid_italy_sir_fit.png` showing the model fit
+- Discuss the quality of the fit
+
+## 4. Discussion
+- Compare estimated R0 to published literature values (2.5-3.5)
+- Explain why our estimate might differ (averaging pre/post lockdown)
+- Discuss limitations of the basic SIR model for COVID-19
+- Suggest improvements: time-varying β, SEIR model, age structure
+
+## 5. Conclusion
+- Summary of key findings
+- The value of simple models for building intuition
+
+Save the report as `results/covid_analysis_report.md`.
+Then convert to PDF using: `pandoc results/covid_analysis_report.md -o results/covid_analysis_report.pdf`
+```
+
+### Prompt 5.1a: Review the Report
+```
+Act as a peer reviewer for an epidemiology journal.
+Read the report at `results/covid_analysis_report.md`.
+
+Evaluate:
+1. **Clarity**: Is the methodology clearly explained?
+2. **Accuracy**: Are the R0 interpretations correct?
+3. **Completeness**: Are limitations adequately discussed?
+4. **Figures**: Are the figures properly referenced and captioned?
+
+Provide constructive feedback for improving the manuscript.
+```
+
+---
+
 ## Discussion Points for the Seminar
 
 After running these prompts, the presenter can discuss:

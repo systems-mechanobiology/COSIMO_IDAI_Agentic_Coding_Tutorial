@@ -64,6 +64,7 @@ All prompts for the live demo are in **Section 6** of `contents_brainstorming.md
   - **Option A:** Real COVID-19 data from JHU CSSE (Italy first wave)
   - **Option B:** Synthetic data fallback (if network issues)
 - **Part 4 (4.1–4.1a):** Advanced extensions (time-varying β)
+- **Part 5 (5.1–5.1a):** Scientific Writing (report generation + peer review)
 
 **Data source:** See `planning/real_world_data_plan.md` for full implementation details.
 
