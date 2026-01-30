@@ -26,14 +26,43 @@ quarto preview slides.qmd
 
 ## 🎯 During the Seminar
 
-1. Open slides in browser: `cd slides && quarto preview slides.qmd`
-2. Open IDE (VS Code, Cursor) with `planning/contents_brainstorming.md` visible
-3. When reaching live coding sections, copy prompts from §6 of the brainstorming doc
-4. Paste prompts into your AI coding agent
-5. Let the agent generate code while you narrate
+1. **Part 1-2**: Simulation from scratch (Basic Python)
+2. **Part 3**: Real-World Data Analysis (Italy COVID-19)
+    - Data loading & visualization
+    - Fitting SIR model to real data
+    - Critiquing the fit
+3. **Part 4**: Advanced Extensions
+    - Time-varying parameters (Lockdown modeling)
+    - Country comparisons (Italy vs South Korea)
+    - Uncertainty quantification
+4. **Part 5**: Scientific Writing
+    - AI generating full scientific reports
+    - AI peer reviewing the reports
+
+## 📁 Key Files
+
+- `planning/contents_brainstorming.md`: Master prompt list for all sections
+- `data/`: COVID-19 time series data (JHU CSSE)
+- `src/`: Example implementation scripts
+    - `fit_sir_model.py`: Basic fitting
+    - `fit_sir_timevarying.py`: Advanced piecewise fitting
+    - `compare_countries.py`: Italy vs South Korea comparison
+
+## 🚀 Quick Start
+
+```bash
+# 1. Preview slides
+cd slides && quarto preview slides.qmd
+
+# 2. Run the UK analysis (University of Birmingham Special)
+python3 src/analyze_uk.py
+
+# 3. View the generated report
+open results/covid_analysis_report.pdf
+```
 
 ## 📖 For Presenters
 
 - See `AGENTS.md` for full project documentation
-- See `.agent/workflows/live-coding.md` for agent behavior guidelines
 - See `planning/contents_brainstorming.md` §6 for all demo prompts
+
