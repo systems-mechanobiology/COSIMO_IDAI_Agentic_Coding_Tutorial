@@ -7,6 +7,59 @@ date: "2025-02-13"
 format: revealjs
 ---
 
+
+# COSIMO-IDAI Series {.center}
+
+## Accelerating Research with Agentic AI
+
+**Overall Purpose:**
+AI is now integral to science, but **rapid evolution** and **opaque failure modes** make reliable usage difficult.
+
+**This series aims to:**
+
+::: {.incremental}
+- Equip researchers with **practical, model-agnostic skills**
+- Develop **critical literacy** on failure modes
+- Promote **best practices** for reproducibility & validation
+- Create a shared **institutional culture** around AI science
+:::
+
+::: {.notes}
+Target audience: PhD students, postdocs, PIs, and RSEs across all disciplines.
+:::
+
+---
+
+# Disclaimer & Community {.center}
+
+## Important Policy Notice
+
+::: {.warning-box}
+**University Policy:** Currently, only **M365 Copilot** is officially supported.
+Tests for compliant advanced models are underway.
+:::
+
+**This session is for information only.**
+
+❌ **DO NOT** use these tools with:
+- Sensitive / Personal Data (GDPR)
+- Export Control / Restricted IP
+- Clinical Data
+
+---
+
+## Join the Community!
+
+**We are building a Community of Practice.**
+
+::: {.incremental}
+- 📢 **Contribute**: Share your prompts or workflows in future sessions
+- 🏳️ **Skeptics Welcome**: Present AI failures — are they inherent or fixable?
+- ⚖️ **Ethics Sessions**: Specific sessions planned for later this year
+:::
+
+---
+
 # Welcome {.center}
 
 ## Agentic Coding: From Idea to Proof-of-Concept
@@ -23,28 +76,104 @@ Welcome everyone. Today we'll see how AI coding agents can accelerate research.
 
 ---
 
-# Part 1: What Are Coding Agents? {.center}
+# The Challenge {.center}
 
-## The Evolution of AI-Assisted Coding
+## Our Goal Today: The SIR Model
+
+**Remember the pandemic?** The famous **R number**?
+
+We want to simulate that spread.
+
+$$ \text{Susceptible} \rightarrow \text{Infected} \rightarrow \text{Recovered} $$
+
+**The Mission:**
+
+1.  **Build** this simulation code from scratch.
+2.  **Visualise** the outbreak.
+3.  **Analyse** it with data.
+
+*...without writing the code ourselves.*
+
+---
+
+# Part 1: The Evolution of AI Coding {.center}
+
+## The Math Behind the Model
 
 ::: {.columns}
-::: {.column width="50%"}
-**Traditional Autocomplete**
+::: {.column width="60%"}
+We want to go from **blank file** to **working simulation** of a pandemic (SIR model).
 
-- Suggests next few tokens
-- Context-limited
-- You drive everything
+- **S**: Susceptible
+- **I**: Infected
+- **R**: Recovered
+
+We will build this *live* to demonstrate the power of **Coding Agents**.
 :::
 
-::: {.column width="50%"}
-**Agentic Coding**
+::: {.column width="40%"}
+$$
+\begin{aligned}
+\frac{dS}{dt} &= -\beta S I \\
+\frac{dI}{dt} &= \beta S I - \gamma I \\
+\frac{dR}{dt} &= \gamma I
+\end{aligned}
+$$
+:::
+:::
 
-- Understands your *intent*
-- Reads/writes multiple files
-- Runs commands, debugs errors
-- Acts as a collaborator
-:::
-:::
+---
+
+## 1.5. From Autocomplete to Agents
+
+**Two Converging Paths:**
+
+1.  **From Autocomplete:** `Tab-Complete` → Copilot → "Ghost text"
+2.  **From Chatbots:** ChatGPT → Copy/Paste → Integrated Chat
+3.  **The Merger:** Coding Agents
+
+---
+
+## Path 1: Autocomplete (The "Inline" Path)
+
+*   **Start:** IDE suggestions (variable names)
+*   **Evolution:** GitHub Copilot (2021) — context-aware next tokens
+*   **Limitation:**
+    *   Reactive, not proactive
+    *   Cannot run or test its own code
+    *   "Thinks" in small context windows (file-level)
+
+---
+
+## Path 2: Chatbots (The "Conversational" Path)
+
+*   **Interaction:** Copy-paste into ChatGPT/Claude window
+*   **Limitation:**
+    *   **The "Clipboard Wall":** You must manually move code back and forth
+    *   **Zero-shot:** If it fails, *you* paste the error back
+    *   **Context:** Limited to what you paste
+
+---
+
+## The Convergence: Coding Agents
+
+*   **Interaction:** Agent has **terminal** and **file access**
+*   **The Loop:**
+    1.  **Write** code
+    2.  **Run** code
+    3.  **Read Error** (if any)
+    4.  **Fix** code
+*   **Context:** Reads the entire repository (Project awareness)
+
+---
+
+## The Model Landscape (2026)
+
+| Category | Description | Examples |
+|----------|-------------|----------|
+| **Instruction Models** | Fast, good for snippets | GPT-5.2, Kimi, DeepSeek V3 |
+| **Reasoning Models** | Plan before coding | o3-high, DeepSeek R2, Gemini 3.0 Think |
+| **Agentic Frameworks** | The UI that *acts* | Cursor, Copilot Agent, Cline, Claude Code |
 
 ---
 
@@ -163,39 +292,24 @@ Open `prompts/03_analysis.md` for the prompts we'll use.
 
 ---
 
-# Part 4: Debugging AI-Generated Code {.center}
+# Part 4: Outlook (2026) {.center}
 
-## When Things Go Wrong
-
-AI-generated code is not always correct. Common issues:
+## Software Engineering is Changing
 
 ::: {.incremental}
-- **Hallucinated APIs** — functions that don't exist
-- **Logic errors** — correct syntax, wrong algorithm
-- **Version mismatches** — code for older library versions
+- **2022**: Copy-pasting fragments
+- **2026**: Orchestrating **Agents**
+- **New Skills**: Managing **MCP Servers**, defining Agent Skills
 :::
 
----
+## Coming Up Next
 
-## Debugging Strategy
-
-::: {.prompt-box}
-"This code throws [paste error message]. The issue seems to be with [your hypothesis]. Can you fix it?"
+::: {.warning-box}
+**In Two Weeks:** "Building Custom Agent Skills"
+(Connecting agents to your own databases and tools)
 :::
 
-**Key principles:**
-
-1. **Share the error message** — the agent can read stack traces
-2. **Share your hypothesis** — even if wrong, it helps
-3. **Test incrementally** — don't ask for everything at once
-
----
-
-## Example: Fixing a Real Error
-
-::: {.prompt-box}
-"When I run the simulation with β=0.3 and γ=0.1, I get negative population values. This violates conservation of population. Please check the ODE implementation and fix the issue."
-:::
+**Today:** We focus on the *practical application*.
 
 ---
 

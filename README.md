@@ -6,28 +6,31 @@ A 50-minute seminar demonstrating how to use AI coding agents for scientific pro
 
 ```bash
 # Preview the slides
+cd slides
 quarto preview slides.qmd
-
-# Render to HTML
-quarto render slides.qmd
 ```
 
 ## 📁 Structure
 
 ```
-├── slides.qmd          # Main presentation
+├── slides/             # Presentation files
+│   ├── slides.qmd      # Main slide deck
+│   └── custom.scss     # Theme styling
 ├── prompts/            # Prompts for live coding demos
 │   ├── 01_setup.md     # Initial setup prompts
 │   ├── 02_simulation.md # Simulation code prompts
 │   └── 03_analysis.md  # Data analysis prompts
+├── planning/           # Seminar planning
+│   └── contents_brainstorming.md # Content strategy & notes
 ├── examples/           # Generated code (created during demo)
 └── .agent/workflows/   # Instructions for the coding agent
 ```
 
 ## 🎯 During the Seminar
 
-1. Open `slides.qmd` in presentation mode
-2. When reaching live coding sections, open the corresponding prompt file
+1. Navigate to slides: `cd slides`
+2. Open `slides.qmd` in presentation mode
+3. When reaching live coding sections, open the corresponding prompt file
 3. Copy prompts into your AI coding agent (VS Code, Cursor, etc.)
 4. Let the agent generate code while you narrate
 
