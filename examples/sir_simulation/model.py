@@ -1,13 +1,14 @@
+from typing import Sequence, List
 import numpy as np
-from typing import Tuple, List
+from numpy.typing import ArrayLike
 
-def sir_derivatives(y: List[float], t: float, N: float, beta: float, gamma: float) -> List[float]:
+def sir_derivatives(y: Sequence[float], t: float, N: float, beta: float, gamma: float) -> List[float]:
     """
     Calculates the derivatives for the SIR model.
 
     Args:
-        y (List[float]): Current state vector [S, I, R].
-        t (float): Time point.
+        y (Sequence[float]): Current state vector [S, I, R].
+        t (float): Time point (unused in autonomous system, but required by odeint).
         N (float): Total population.
         beta (float): Transmission rate.
         gamma (float): Recovery rate.

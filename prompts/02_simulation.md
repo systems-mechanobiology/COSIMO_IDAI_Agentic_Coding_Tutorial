@@ -87,10 +87,7 @@ Explain what is happening in the simulation.
 
 ---
 
-## Prompt 2.6: Real Data Extension (Transition to Part 3)
-
-*Note: In the next section, we will compare this simulation to real data.*
-
+## Prompt 2.6: Parameter Sensitivity
 
 ```
 Create a function that runs the SIR model for a range of β values (0.1 to 0.5).
@@ -102,13 +99,63 @@ Plot these as a function of β in a two-panel figure.
 
 ---
 
-## Debugging Prompt (if errors occur)
+### Prompt 2.6a: Explain the Change
+```
+Look at the new results.
+- How did changing beta to 0.5 affect the peak parameters?
+- Is the relationship linear?
+```
+
+---
+
+## Prompt 2.7: Agent Code Reviewer (Best Practice)
+
+*Best Practice: In a multi-agent workflow, one agent codes, another reviews. Here, we ask the model to switch personas.*
 
 ```
-This code throws [paste error message].
-The simulation is trying to [describe what you expect].
-Can you debug this and fix the issue?
+Act as a Senior Python Engineer Code Reviewer.
+Review the current codebase (model.py, main.py, visualize.py).
+Identify issues in:
+1. **Hardcoded values** (should be constants/config)
+2. **Type Hints** and Documentation
+3. **Modularity**
+
+Provide specific refactoring instructions but DO NOT apply them yet.
 ```
+
+**What to highlight:** Agents are excellent linting tools. This reinforces "Trust but Verify".
+
+---
+
+## Prompt 2.8: Apply the Fixes
+
+*Copy the list of issues provided by the Reviewer Agent and paste them here.*
+
+```
+Here is the code review feedback:
+[PASTE REVIEW FEEDBACK HERE]
+
+Please apply these changes to the codebase. Ensure the simulation still produces the same results after refactoring.
+```
+
+**What to highlight:** Closing the loop. The "Coder" agent follows the "Reviewer" agent's instructions.
+
+---
+
+## Prompt 2.9: Scientific Report Generation
+
+*Now we switch personas again: from Coder to Author.*
+
+```
+Write a brief "Scientific Report" (markdown) summarizing the work:
+1. **Methods:** Description of the SIR model and parameters used.
+2. **Results:** Summary of the findings (peak infection, sensitivity to beta).
+3. **Validation:** Mention that code was reviewed and results reproduced.
+
+Save this as `results/report.md`.
+```
+
+**What to highlight:** Documentation is key. This prepares the material for the next layer of review (The "Scientist" persona).
 
 ---
 

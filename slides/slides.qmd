@@ -167,13 +167,14 @@ $$
 
 ---
 
-## The Model Landscape (2026)
+## The AI Landscape (2026): Models & Tools
 
-| Category | Description | Examples |
-|----------|-------------|----------|
-| **Instruction Models** | Fast, good for snippets | GPT-5.2, Kimi, DeepSeek V3 |
-| **Reasoning Models** | Plan before coding | o3-high, DeepSeek R2, Gemini 3.0 Think |
-| **Agentic Frameworks** | The UI that *acts* | Cursor, Copilot Agent, Cline, Claude Code |
+| Tier | Description | Models (2026) |
+|------|-------------|---------------|
+| **Thinking** | Reliable daily coding | GPT-5.2 Think, DeepSeek R2, Claude 4.5 Sonnet |
+| **Pro** | Maths & Derivations | GPT-5.2 Pro, Gemini DeepThink, Claude 4.5 Opus |
+| **Open Weights** | Local / Private / Cheap | Llama 4, Mistral Large, DeepSeek V3 |
+| **Frameworks** | The UI that *acts* | Cursor, Copilot Agent, Cline, Claude Code |
 
 ---
 

@@ -14,6 +14,7 @@
 ## 0.5. Disclaimer & Community
 *   **Policy:** University supports M365 Copilot only (currently).
 *   **Warning:** NO sensitive data (GDPR/Export Control) in these tools.
+*   **Best Practice:** Use **isolated environments** (VMs, containers, clean non-admin accounts).
 *   **Community:** Open call for contributors (coding & prompts) and skeptics (failure cases).
 *   **Ethics:** Dedicated sessions coming later.
 
@@ -26,7 +27,7 @@
 **Theme:** "From syntax to scientific intent."
 **Hook:** "We used to suggest code; now we collaborate on solutions."
 
-## 2. The Evolution of AI Coding (Deep Dive)
+## 2. The Evolution of AI Coding (Brief History)
 
 ### Path A: The "Inline" Evolution (Autocomplete)
 *   **Era 1: Static Analysis (1990s-2015):** IntelliSense (VB6, early VS). Types, methods. "Dumb" but correct.
@@ -46,22 +47,31 @@
     *   Old: REPL (Read-Eval-Print Loop) controlled by Human.
     *   New: **Plan-Act-Observe Loop** controlled by Agent.
 *   **The Loop:**
-    1.  **Plan:** "I need to install numpy and write a script."
-    2.  **Act:** Writes file `model.py`.
-    3.  **Observe:** Runs `python model.py`. Sees `ImportError`.
-    4.  **Refine:** Installs package. Runs again.
+    1.  **Plan:** "I need to calculate the pairwise distances between 1000 atoms."
+    2.  **Act:** Writes python script using `scipy.spatial`.
+    3.  **Observe:** Runs script. Sees `MemoryError` (matrix too big).
+    4.  **Refine:** "Switch to a sparse matrix or iterative interactions."
 *   **Why it matters:** It closes the feedback loop *without human intervention*.
 
 ## 3. The Model Landscape (2026 Usage)
 
-### 1. Instruction Models (The "Doers")
-*   **Best for:** Quick refactors, simple functions, docs.
-*   **Top Tier:** **GPT-5.2 Pro**, Kimi (Moonshot), DeepSeek V3.
-*   **Open Source:** Llama 4 (405B), Mistral.
+### 1. The "Thinking" Tier (Reasoning Models)
+*   **Best for:** Reliable daily coding, refactoring, docs.
+*   **Examples:**
+    *   **OpenAI:** GPT-5.2 Thinking.
+    *   **DeepSeek:** DeepSeek R2.
+    *   **Anthropic:** Claude 4.5 Sonnet.
 
-### 2. Reasoning Models (The "Thinkers")
-*   **Best for:** Complex architecture, mathematical derivations.
-*   **Top Tier:** OpenAI o3-high, DeepSeek R2, Gemini 3.0 Flash-Thinking.
+### 2. The "Pro" Tier (Instruction Models)
+*   **Best for:** Complex architecture, mathematical derivations, hard debugging.
+*   **Examples:**
+    *   **OpenAI:** GPT-5.2 Pro.
+    *   **Google:** Gemini DeepThink.
+    *   **Anthropic:** Claude 4.5 Opus.
+
+### 3. Open Weights (Local-able)
+*   **Note:** Often called "Open Source" but technically "Open Weights".
+*   **Examples:** Llama 4 (405B), Mistral Large, DeepSeek V3 (Weights available).
 
 ### 3. Agentic Frameworks (The "Drivers")
 *   **Leading Tools:**

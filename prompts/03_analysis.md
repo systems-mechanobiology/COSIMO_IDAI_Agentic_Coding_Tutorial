@@ -17,6 +17,14 @@ Load this into a pandas DataFrame and plot it as scatter points with error bars 
 
 **What to highlight:** Mixing manual data entry with pandas operations.
 
+### Prompt 3.1a: Explain the Data
+```
+Look at the scatter plot.
+- Describe the trend. Does it look exponential at first?
+- When does it peak?
+- Are the error bars realistic for these counts?
+```
+
 ---
 
 ## Prompt 3.2: Fit Simulation to Data
@@ -34,6 +42,14 @@ Then, use `scipy.optimize.minimize` to find the best beta and gamma.
 
 **What to highlight:** Complex multi-step reasoning. Bridging "simulation time" (continuous) and "data time" (discrete).
 
+### Prompt 3.2a: Interpret the Parameters
+```
+Based on the optimized `beta` and `gamma`:
+1. Calculate the Basic Reproduction Number (R0 = beta/gamma).
+2. Is this R0 characteristic of a highly infectious disease (like Measles) or a moderate one (like Flu)?
+3. What is the expected duration of infection (1/gamma)?
+```
+
 ---
 
 ## Prompt 3.3: Final Visualization
@@ -47,6 +63,14 @@ Create a final plot showing:
 ```
 
 **What to highlight:** The grand finale — combining data and theory.
+
+### Prompt 3.3a: Critical Critique
+```
+Critically evaluate the fit shown in `results/fitted_model.png`.
+- Does the model capture the peak correctly?
+- Does it capture the tail?
+- The SIR model assumes a constant population/mixing. Where does this assumption fail for real epidemics?
+```
 
 ---
 
