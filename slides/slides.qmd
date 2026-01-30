@@ -266,36 +266,48 @@ Let's see what the agent produces...
 
 # Part 3: Live Coding — Data Analysis {.center}
 
-## Building an Analysis Pipeline
+## Fitting to Real COVID-19 Data
 
 ::: {.warning-box}
 **Live Demo!** 🎬  
-Open `prompts/03_analysis.md` for the prompts we'll use.
+We'll fit our SIR model to real pandemic data from Italy's first wave.
 :::
+
+---
+
+## The Data: Italy, February–May 2020
+
+- **Source:** Johns Hopkins CSSE COVID-19 Repository
+- **Period:** First wave (before vaccines, clear lockdown signal)
+- **Key event:** National lockdown on **March 9, 2020**
+
+*Can our simple SIR model capture a real pandemic?*
 
 ---
 
 ## Prompt 1: Load Real Data
 
 ::: {.prompt-box}
-"Create a synthetic dataset representing an outbreak (Cases: [15, 60, ...]). Load this into a pandas DataFrame and plot it as scatter points."
+"Load the COVID-19 data for Italy from `data/covid_italy_first_wave.csv`. Plot active infections over time. Add a vertical line for the lockdown date (March 9)."
 :::
 
 ---
 
-## Prompt 2: Fit Simulation to Data
+## Prompt 2: Fit the SIR Model
 
 ::: {.prompt-box}
-"Create a function that runs the SIR simulation and estimates the best `beta` and `gamma` parameters that minimize the squared error with the real data."
+"Create a function that fits our SIR model to the Italy data. Use `scipy.optimize.minimize` to find the best β and γ. Print the estimated R0."
 :::
 
 ---
 
-## Prompt 3: Critique the Fit
+## Prompt 3: Visualize and Critique
 
 ::: {.prompt-box}
-"Critically evaluate the final plot. Does the model capture the peak correctly? Where does the simple SIR assumption fail?"
+"Plot the best-fit model against the real data. Critically evaluate: where does the simple SIR assumption break down?"
 :::
+
+*Key insight:* The lockdown changed β — our constant-β model can't capture that!
 
 ---
 

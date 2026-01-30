@@ -249,7 +249,112 @@ Provide constructive feedback for the next manuscript draft.
 
 ### Part 3: Real Data Analysis
 
-**Prompt 3.1: Load Data**
+> **Note:** This section uses real COVID-19 data from the JHU CSSE repository. A synthetic fallback is provided at the end for network issues or time constraints.
+
+---
+
+#### Option A: Real COVID-19 Data (Recommended)
+
+**Prompt 3.0: Download COVID-19 Data (Pre-Demo Setup)**
+```
+Download the COVID-19 time series data from the JHU CSSE GitHub repository.
+
+URLs:
+- https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv
+- https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv
+- https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_recovered_global.csv
+
+Save these files to the data/ directory.
+
+Then create a preprocessing script that:
+1. Loads the three CSV files
+2. Filters for Italy
+3. Extracts the time period Feb 22, 2020 to May 31, 2020 (first wave)
+4. Computes active infections: I(t) = Confirmed(t) - Recovered(t) - Deaths(t)
+5. Saves the result to data/covid_italy_first_wave.csv with columns: date, confirmed, deaths, recovered, active
+```
+
+**Prompt 3.1: Load Real COVID-19 Data**
+```
+Load the preprocessed COVID-19 data from data/covid_italy_first_wave.csv.
+This contains daily data for Italy during the first pandemic wave (Feb-May 2020).
+
+Create a visualization showing:
+- Active infections over time as a line plot
+- Daily new cases as a bar chart (secondary panel)
+
+Use proper date formatting on the x-axis.
+Add a vertical line marking Italy's national lockdown (March 9, 2020).
+Save to results/covid_italy_overview.png
+```
+
+**Prompt 3.1a: Interpret the Data**
+```
+Look at the plot results/covid_italy_overview.png.
+
+Describe:
+1. When did exponential growth begin?
+2. How long after the lockdown did cases peak?
+3. Why is there a delay between lockdown and peak? (Hint: incubation period + reporting delay)
+```
+
+**Prompt 3.2: Fit SIR Model to Real Data**
+```
+We want to calibrate our SIR model using the real COVID-19 data for Italy.
+
+Create a fitting function that:
+1. Takes (beta, gamma) as parameters
+2. Runs the SIR simulation for 100 days
+3. Uses Italy's population N = 60,360,000
+4. Assumes initial conditions: I0 from the data on Feb 22, S0 = N - I0, R0 = 0
+5. Interpolates the model's I(t) to match the dates in the data
+6. Returns the Sum of Squared Errors between model I(t) and data active cases
+
+Use scipy.optimize.minimize to find the best-fit beta and gamma.
+Print the optimized parameters and the resulting R0 = beta/gamma.
+```
+
+**Prompt 3.2a: Interpret the Fitted Parameters**
+```
+Based on the optimized beta and gamma:
+
+1. What is the estimated R0 (basic reproduction number)?
+2. How does this compare to published estimates for early COVID-19 (R0 ≈ 2.5-3.5)?
+3. What is the implied infection duration (1/gamma in days)?
+4. Does this match what we know about COVID-19 (typically 10-14 days infectious)?
+```
+
+**Prompt 3.3: Visualize the Fit**
+```
+Create a publication-quality figure showing:
+1. The real data (active cases) as scatter points
+2. The best-fit SIR model as a smooth curve
+3. The lockdown date (March 9) as a vertical dashed line
+4. Key parameters in a text box: β, γ, R0
+
+Title: "SIR Model Fit to Italy COVID-19 First Wave"
+Save to results/covid_italy_sir_fit.png at 300 DPI
+```
+
+**Prompt 3.3a: Critique the Fit**
+```
+Critically evaluate the fit shown in results/covid_italy_sir_fit.png.
+
+Consider:
+1. Does the model capture the growth phase well?
+2. Does it capture the peak timing?
+3. Does it capture the decline?
+4. Where does the constant-β assumption clearly fail?
+5. What would we need to add to the model to capture the lockdown effect?
+```
+
+---
+
+#### Option B: Synthetic Data (Fallback)
+
+> Use this if network issues prevent downloading real data, or if time is limited.
+
+**Prompt 3.1-alt: Load Synthetic Data**
 ```
 Create a synthetic dataset representing "Real World Statistics" for an outbreak.
 - Weeks: 0 to 8
@@ -259,15 +364,7 @@ Create a synthetic dataset representing "Real World Statistics" for an outbreak.
 Load this into a pandas DataFrame and plot it as scatter points with error bars (assume sqrt(N) error).
 ```
 
-**Prompt 3.1a: Explain Data**
-```
-Look at the scatter plot.
-- Describe the trend. Does it look exponential at first?
-- When does it peak?
-- Are the error bars realistic for these counts?
-```
-
-**Prompt 3.2: Fit Model**
+**Prompt 3.2-alt: Fit Model to Synthetic Data**
 ```
 We want to fit our SIR model to this data.
 Create a function that:
@@ -279,15 +376,7 @@ Create a function that:
 Then, use `scipy.optimize.minimize` to find the best beta and gamma.
 ```
 
-**Prompt 3.2a: Interpret Params**
-```
-Based on the optimized `beta` and `gamma`:
-1. Calculate the Basic Reproduction Number (R0 = beta/gamma).
-2. Is this R0 characteristic of a highly infectious disease (like Measles) or a moderate one (like Flu)?
-3. What is the expected duration of infection (1/gamma)?
-```
-
-**Prompt 3.3: Final Plot**
+**Prompt 3.3-alt: Final Plot (Synthetic)**
 ```
 Create a final plot showing:
 1. The "Real Data" as scatter points with error bars.
@@ -296,12 +385,34 @@ Create a final plot showing:
 4. Save as `results/fitted_model.png`.
 ```
 
-**Prompt 3.3a: Critique**
+---
+
+### Part 4: Advanced Extensions (Optional)
+
+> These go beyond the basic demo if time permits.
+
+**Prompt 4.1: Time-Varying Transmission Rate**
 ```
-Critically evaluate the fit shown in `results/fitted_model.png`.
-- Does the model capture the peak correctly?
-- Does it capture the tail?
-- The SIR model assumes a constant population/mixing. Where does this assumption fail for real epidemics?
+The basic SIR model assumes constant transmission rate β.
+But Italy implemented a lockdown on March 9, 2020.
+
+Modify the SIR model to use a piecewise β(t):
+- β = β_pre   for t < lockdown_day (day 16 in our data)
+- β = β_post  for t ≥ lockdown_day
+
+Fit the model with THREE parameters: β_pre, β_post, and γ.
+Compare the fit quality to the constant-β model.
+Calculate R0 before and after lockdown.
+```
+
+**Prompt 4.1a: Interpret the Intervention Effect**
+```
+Based on the time-varying β fit:
+
+1. What was R0 before lockdown?
+2. What was R0 after lockdown?
+3. Did the lockdown bring R0 below 1? (The epidemic control threshold)
+4. What is the "intervention effectiveness" = 1 - (β_post/β_pre)?
 ```
 
 ## 7. Q&A Prep
