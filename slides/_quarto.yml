@@ -21,8 +21,6 @@ format:
     footer: "COSIMO-IDAI Seminar Series | University of Birmingham"
     chalkboard: false
     navigation-mode: linear
-    touch: true
-    keyboard: true
     embed-resources: false
 
 execute:
