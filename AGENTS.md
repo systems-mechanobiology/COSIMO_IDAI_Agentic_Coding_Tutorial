@@ -60,7 +60,12 @@ All prompts for the live demo are in **Section 6** of `contents_brainstorming.md
 
 - **Part 1 (1.1–1.3):** Setup prompts
 - **Part 2 (2.1–2.10):** SIR Simulation prompts
-- **Part 3 (3.1–3.3):** Real Data Analysis prompts
+- **Part 3 (3.0–3.3a):** Real Data Analysis prompts
+  - **Option A:** Real COVID-19 data from JHU CSSE (Italy first wave)
+  - **Option B:** Synthetic data fallback (if network issues)
+- **Part 4 (4.1–4.1a):** Advanced extensions (time-varying β)
+
+**Data source:** See `planning/real_world_data_plan.md` for full implementation details.
 
 During the demo, the presenter copies prompts directly from this section.
 
