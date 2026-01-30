@@ -54,16 +54,25 @@ $body-bg: #ffffff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   }
 
-  // Reposition Logo to Bottom Left
+  // Reposition Logo to Bottom Left via CSS override
   .slide-logo {
-    left: 20px !important;
+    left: 40px !important; // Increased margin for balance
     right: auto !important;
-    bottom: 20px !important;
+    bottom: 40px !important;
+    max-width: 300px !important; // Increased from default
+    max-height: 150px !important;
+    height: auto !important;
+    width: auto !important;
+  }
+
+  // Ensure the image inside scales up if needed
+  .slide-logo img {
+    max-height: 120px !important; // Force image size
+    min-height: 80px !important;
   }
 }
 
 // Custom Title Slide Geometry
-// Target by id #title-slide which Quarto generates
 #title-slide {
   text-align: left;
   padding-left: 0;
@@ -93,27 +102,25 @@ $body-bg: #ffffff;
     justify-content: flex-start;
   }
 
-  // decorative geometric lines
+  // EXACT GEOMETRY REPLICATION via SVG
+  // Vertex approx 58% width, 62% height
   &::before {
     content: "";
     position: fixed;
-    /* Fixed to viewport to stay sharp */
     top: 0;
-    right: 0;
-    width: 50vw;
+    left: 0;
+    width: 100vw;
     height: 100vh;
-    background:
-      linear-gradient(220deg, transparent 40%, #000 40.2%, transparent 40.4%),
-      linear-gradient(190deg, transparent 50%, #000 50.2%, transparent 50.4%),
-      linear-gradient(250deg, transparent 30%, #000 30.2%, transparent 30.4%);
-    background-size: cover;
+    // Encoded SVG path matching reference geometry
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M58 62 L88 7 M58 62 L68 28 M58 62 L68 88 M58 62 L90 100' stroke='black' stroke-width='0.2' fill='none'/%3E%3C/svg%3E");
+    background-size: 100% 100%;
     opacity: 0.8;
     z-index: -1;
     pointer-events: none;
   }
 }
 
-// Logo positioning (bottom left)
+// Footer styling
 .reveal .footer {
   text-align: center;
   color: $uob-grey;
