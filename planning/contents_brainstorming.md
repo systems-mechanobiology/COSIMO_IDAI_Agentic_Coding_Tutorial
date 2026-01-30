@@ -389,9 +389,13 @@ Create a final plot showing:
 
 ### Part 4: Advanced Extensions (Optional)
 
-> These go beyond the basic demo if time permits.
+> These prompts extend beyond the basic demo if time permits. They address real-world complexity and model limitations.
 
-**Prompt 4.1: Time-Varying Transmission Rate**
+---
+
+#### 4.1 Time-Varying Transmission Rate
+
+**Prompt 4.1: Piecewise β Model**
 ```
 The basic SIR model assumes constant transmission rate β.
 But Italy implemented a lockdown on March 9, 2020.
@@ -413,6 +417,42 @@ Based on the time-varying β fit:
 2. What was R0 after lockdown?
 3. Did the lockdown bring R0 below 1? (The epidemic control threshold)
 4. What is the "intervention effectiveness" = 1 - (β_post/β_pre)?
+```
+
+---
+
+#### 4.2 Cross-Country Comparison
+
+**Prompt 4.2: Compare Multiple Countries**
+```
+Repeat the SIR fitting for South Korea using the same time period.
+South Korea used aggressive testing and contact tracing instead of lockdown.
+
+Create a comparison figure showing:
+- Italy data + fit (left panel)
+- South Korea data + fit (right panel)
+- A table comparing β, γ, and R0 for both countries
+
+Discuss: Which country had lower R0? What strategies might explain this?
+```
+
+---
+
+#### 4.3 Uncertainty Quantification
+
+**Prompt 4.3: Bootstrap Confidence Intervals**
+```
+Our point estimates for β and γ don't capture uncertainty.
+
+Use scipy.optimize.minimize with method='L-BFGS-B' to get the Hessian.
+Compute approximate confidence intervals from the inverse Hessian.
+
+Alternatively, use a bootstrap approach:
+1. Add noise to the data (resample residuals)
+2. Refit 100 times
+3. Report the 95% confidence interval for R0
+
+Visualize the uncertainty as a shaded band around the model curve.
 ```
 
 ---
@@ -471,6 +511,37 @@ Evaluate:
 
 Provide constructive feedback for improving the manuscript.
 ```
+
+---
+
+## Discussion Points for the Seminar
+
+After running these prompts, the presenter can discuss:
+
+| Topic | Teaching Point |
+|-------|----------------|
+| **Model-data mismatch** | SIR is too simple for COVID-19; useful for intuition, not prediction |
+| **Data quality** | "Recovered" was poorly reported; active cases are estimates |
+| **Interventions** | Constant β fails when behavior changes (lockdowns, masks, vaccines) |
+| **R0 interpretation** | R0 depends on context; not an intrinsic property of the virus alone |
+| **Extensions** | SEIR (exposed compartment), age structure, spatial models |
+
+---
+
+## Data Source Reference
+
+**JHU CSSE COVID-19 Dataset**  
+Repository: https://github.com/CSSEGISandData/COVID-19
+
+Key files (direct raw links):
+```
+https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv
+https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv
+https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_recovered_global.csv
+```
+
+**Citation (required if publishing):**
+> Dong E, Du H, Gardner L. An interactive web-based dashboard to track COVID-19 in real time. Lancet Inf Dis. 20(5):533-534. doi: 10.1016/S1473-3099(20)30120-1
 
 ## 7. Q&A Prep
 *   **"Can I run this on my sensitive patient data?"** -> Use Local Models (DeepSeek R2 / Llama 4) via Cline or Ollama.

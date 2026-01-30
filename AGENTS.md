@@ -63,10 +63,11 @@ All prompts for the live demo are in **Section 6** of `contents_brainstorming.md
 - **Part 3 (3.0–3.3a):** Real Data Analysis prompts
   - **Option A:** Real COVID-19 data from JHU CSSE (Italy first wave)
   - **Option B:** Synthetic data fallback (if network issues)
-- **Part 4 (4.1–4.1a):** Advanced extensions (time-varying β)
+- **Part 4 (4.1–4.3):** Advanced extensions
+  - 4.1: Time-varying β (piecewise transmission rate)
+  - 4.2: Cross-country comparison (Italy vs South Korea)
+  - 4.3: Uncertainty quantification (bootstrap/Hessian)
 - **Part 5 (5.1–5.1a):** Scientific Writing (report generation + peer review)
-
-**Data source:** See `planning/real_world_data_plan.md` for full implementation details.
 
 During the demo, the presenter copies prompts directly from this section.
 

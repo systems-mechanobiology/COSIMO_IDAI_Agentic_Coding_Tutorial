@@ -311,7 +311,49 @@ We'll fit our SIR model to real pandemic data from Italy's first wave.
 
 ---
 
-# Part 4: Outlook (2026) {.center}
+# Part 4: Advanced Extensions {.center}
+
+## Going Beyond Basic SIR
+
+::: {.incremental}
+- **4.1 Time-Varying β:** Model the lockdown effect with piecewise transmission
+- **4.2 Country Comparison:** Compare Italy vs South Korea response strategies
+- **4.3 Uncertainty:** Bootstrap confidence intervals for R₀
+:::
+
+---
+
+## Prompt: Time-Varying Transmission
+
+::: {.prompt-box}
+"Modify the SIR model to use β_pre before lockdown and β_post after. Fit both values and compare R₀ before and after March 9."
+:::
+
+*This captures what our constant-β model missed!*
+
+---
+
+# Part 5: Scientific Writing {.center}
+
+## Let the AI Write the Report
+
+::: {.prompt-box}
+"Write a scientific report summarizing our COVID-19 SIR analysis. Include Introduction, Methods, Results with figures, Discussion of limitations, and Conclusion."
+:::
+
+---
+
+## Prompt: Peer Review
+
+::: {.prompt-box}
+"Act as a peer reviewer. Evaluate the report for clarity, accuracy, and completeness. Provide constructive feedback."
+:::
+
+*The AI can both write AND review!*
+
+---
+
+# Part 6: Outlook (2026) {.center}
 
 ## Software Engineering is Changing
 
@@ -340,8 +382,8 @@ We'll fit our SIR model to real pandemic data from Italy's first wave.
 - ✅ Coding agents as scientific collaborators
 - ✅ Prompting with *scientific intent*, not syntax
 - ✅ Building simulation code from scratch
-- ✅ Creating data analysis pipelines
-- ✅ Debugging AI-generated code
+- ✅ Fitting models to real COVID-19 data
+- ✅ AI-assisted scientific report writing
 :::
 
 ---
