@@ -7,16 +7,23 @@ format:
     theme: [default, custom.scss]
     slide-number: true
     code-line-numbers: true
-    highlight-style: github-dark
-    transition: slide
+    highlight-style: github
+    transition: fade
     width: 1600
     height: 900
     margin: 0.1
-    center: true
+    center: false
     hash: true
     history: true
     controls: true
     progress: true
+    logo: Logo/PNG/UoB_Crest_Logo_RGB_POS_Landscape.png
+    footer: "COSIMO-IDAI Seminar Series | University of Birmingham"
+    chalkboard: false
+    navigation-mode: linear
+    touch: true
+    keyboard: true
+    embed-resources: false
 
 execute:
   echo: true
