@@ -235,8 +235,14 @@ Part 3: Data Analysis
 
 ## Next Steps
 
-1. [ ] Run Prompt 0.1 to download and preprocess the data
-2. [ ] Test Prompts 3.1-3.3 to verify the fitting workflow
+1. [x] Run Prompt 0.1 to download and preprocess the data
+   - ✅ `data/covid_italy_first_wave.csv` created
+   - ✅ `data/preprocess_covid_data.py` script created
+   - ✅ Raw CSV files downloaded
+2. [x] Test Prompts 3.1-3.3 to verify the fitting workflow
+   - ✅ `results/covid_italy_overview.png` generated
+   - ✅ `results/covid_italy_sir_fit.png` generated
+   - ✅ `src/fit_sir_model.py` created
 3. [ ] Decide which optional extensions (4.1-4.3) to include
-4. [ ] Update contents_brainstorming.md with finalized prompts
-5. [ ] Update slides.qmd to reference real data section
+4. [x] Update contents_brainstorming.md with finalized prompts
+5. [x] Update slides.qmd to reference real data section
