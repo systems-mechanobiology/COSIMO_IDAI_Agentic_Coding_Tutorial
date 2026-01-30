@@ -42,6 +42,8 @@ Tests for compliant advanced models are underway.
 - Export Control / Restricted IP
 - Clinical Data
 
+💡 **Best Practice:** Use **isolated environments** (VMs, containers, clean accounts).
+
 ---
 
 ## Join the Community!
@@ -148,12 +150,15 @@ $$
 ## The Convergence: Coding Agents
 
 *   **Interaction:** Agent has **terminal** and **file access**
+*   **The Paradigm Shift:**
+    *   Old: REPL (Read-Eval-Print) controlled by **Human**
+    *   New: **Plan-Act-Observe** controlled by **Agent**
 *   **The Loop:**
-    1.  **Write** code
-    2.  **Run** code
-    3.  **Read Error** (if any)
-    4.  **Fix** code
-*   **Context:** Reads the entire repository (Project awareness)
+    1.  **Plan:** "Calculate pairwise distances between atoms"
+    2.  **Act:** Writes script using `scipy.spatial`
+    3.  **Observe:** Sees `MemoryError`
+    4.  **Refine:** "Switch to sparse matrix"
+*   **Why it matters:** Closes the feedback loop *without human intervention*
 
 ---
 
@@ -179,6 +184,20 @@ $$
 :::
 
 The agent knows how to write loops. **You** know what an SIR model is.
+
+---
+
+## More Examples of Scientific Intent
+
+::: {.prompt-box}
+❌ "Use matplotlib to make a red line plot."
+:::
+
+::: {.prompt-box}
+✅ "Create a publication-quality figure comparing Treatment A vs B. Use seaborn paper style, remove top/right spines, add error bars (SEM), annotate significance."
+:::
+
+**Specific style tokens steer the model better than vague requests.**
 
 ---
 
@@ -297,6 +316,16 @@ We'll fit our SIR model to real pandemic data from Italy's first wave.
 
 ---
 
+## Interpret the Fitted Parameters
+
+::: {.prompt-box}
+"Based on the optimized β and γ: What is R₀? How does it compare to published estimates (2.5-3.5)? What is the implied infection duration (1/γ)?"
+:::
+
+*Teaching point:* R₀ depends on context; not an intrinsic property of the virus alone.
+
+---
+
 ## Part 4: Going Beyond Basic SIR
 
 ::: {.incremental}
@@ -314,6 +343,26 @@ We'll fit our SIR model to real pandemic data from Italy's first wave.
 :::
 
 *This captures what our constant-β model missed!*
+
+---
+
+## Prompt: Country Comparison
+
+::: {.prompt-box}
+"Repeat the SIR fitting for South Korea. Create a side-by-side comparison with Italy. Which country had lower R₀? What strategies might explain this?"
+:::
+
+*South Korea used aggressive testing vs Italy's lockdown approach.*
+
+---
+
+## Prompt: Uncertainty Quantification
+
+::: {.prompt-box}
+"Use bootstrap resampling to estimate 95% confidence intervals for R₀. Visualize the uncertainty as a shaded band around the model curve."
+:::
+
+*Point estimates without uncertainty can be misleading!**
 
 ---
 
@@ -366,6 +415,18 @@ We'll fit our SIR model to real pandemic data from Italy's first wave.
 
 ---
 
+## Discussion Points
+
+| Topic | Teaching Point |
+|-------|----------------|
+| **Model-data mismatch** | SIR is too simple for COVID-19; useful for intuition |
+| **Data quality** | "Recovered" poorly reported; active cases are estimates |
+| **Interventions** | Constant β fails when behavior changes |
+| **R₀ interpretation** | Depends on context, not intrinsic to virus |
+| **Extensions** | SEIR, age structure, spatial models |
+
+---
+
 ## Key Takeaways
 
 1. **You bring domain expertise** — the AI brings coding fluency
@@ -384,6 +445,16 @@ We'll fit our SIR model to real pandemic data from Italy's first wave.
 ::: {.notes}
 Materials will be available after the seminar.
 :::
+
+---
+
+## Data Source Citation
+
+**JHU CSSE COVID-19 Dataset**
+
+> Dong E, Du H, Gardner L. An interactive web-based dashboard to track COVID-19 in real time. *Lancet Inf Dis.* 2020;20(5):533-534.
+
+Repository: `github.com/CSSEGISandData/COVID-19`
 
 ---
 
