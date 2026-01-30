@@ -8,9 +8,7 @@ format: revealjs
 ---
 
 
-# COSIMO-IDAI Series {.center}
-
-## Accelerating Research with Agentic AI
+## COSIMO-IDAI Series: Accelerating Research
 
 **Overall Purpose:**
 AI is now integral to science, but **rapid evolution** and **opaque failure modes** make reliable usage difficult.
@@ -30,9 +28,7 @@ Target audience: PhD students, postdocs, PIs, and RSEs across all disciplines.
 
 ---
 
-# Disclaimer & Community {.center}
-
-## Important Policy Notice
+## Disclaimer: Important Policy Notice
 
 ::: {.warning-box}
 **University Policy:** Currently, only **M365 Copilot** is officially supported.
@@ -60,9 +56,7 @@ Tests for compliant advanced models are underway.
 
 ---
 
-# Welcome {.center}
-
-## Agentic Coding: From Idea to Proof-of-Concept
+## Welcome: Agentic Coding
 
 ::: {.incremental}
 - **Brief overview** of coding agents
@@ -76,9 +70,7 @@ Welcome everyone. Today we'll see how AI coding agents can accelerate research.
 
 ---
 
-# The Challenge {.center}
-
-## Our Goal Today: The SIR Model
+## The Challenge: Our Goal Today
 
 **Remember the pandemic?** The famous **R number**?
 
@@ -96,9 +88,7 @@ $$ \text{Susceptible} \rightarrow \text{Infected} \rightarrow \text{Recovered} $
 
 ---
 
-# Part 1: The Evolution of AI Coding {.center}
-
-## The Math Behind the Model
+## Part 1: The Math Behind the Model
 
 ::: {.columns}
 ::: {.column width="60%"}
@@ -206,9 +196,7 @@ These tools are accessible to anyone with basic coding familiarity.
 
 ---
 
-# Part 2: Live Coding — Simulation {.center}
-
-## From Blank Repo to Working Prototype
+## Part 2: From Blank Repo to Prototype
 
 We'll build a simple epidemiological simulation **from scratch**.
 
@@ -264,9 +252,7 @@ Let's see what the agent produces...
 
 ---
 
-# Part 3: Live Coding — Data Analysis {.center}
-
-## Fitting to Real COVID-19 Data
+## Part 3: Fitting Real Data
 
 ::: {.warning-box}
 **Live Demo!** 🎬  
@@ -311,9 +297,7 @@ We'll fit our SIR model to real pandemic data from Italy's first wave.
 
 ---
 
-# Part 4: Advanced Extensions {.center}
-
-## Going Beyond Basic SIR
+## Part 4: Going Beyond Basic SIR
 
 ::: {.incremental}
 - **4.1 Time-Varying β:** Model the lockdown effect with piecewise transmission
@@ -333,9 +317,7 @@ We'll fit our SIR model to real pandemic data from Italy's first wave.
 
 ---
 
-# Part 5: Scientific Writing {.center}
-
-## Let the AI Write the Report
+## Part 5: Let the AI Write the Report
 
 ::: {.prompt-box}
 "Write a scientific report summarizing our COVID-19 SIR analysis. Include Introduction, Methods, Results with figures, Discussion of limitations, and Conclusion."
@@ -353,9 +335,7 @@ We'll fit our SIR model to real pandemic data from Italy's first wave.
 
 ---
 
-# Part 6: Outlook (2026) {.center}
-
-## Software Engineering is Changing
+## Part 6: Outlook (2026)
 
 ::: {.incremental}
 - **2022**: Copy-pasting fragments
@@ -374,9 +354,7 @@ We'll fit our SIR model to real pandemic data from Italy's first wave.
 
 ---
 
-# Wrap-Up {.center}
-
-## What We Covered
+## Wrap-Up: What We Covered
 
 ::: {.incremental}
 - ✅ Coding agents as scientific collaborators
@@ -417,7 +395,7 @@ Networking lunch follows at 12:00!
 
 ---
 
-# Thank You! {.center}
+## Thank You!
 
 Fabian Spill  
 f.spill@bham.ac.uk
