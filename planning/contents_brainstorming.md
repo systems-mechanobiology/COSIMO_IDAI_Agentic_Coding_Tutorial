@@ -102,26 +102,207 @@
 **Next Session:** "Building Custom Agent Skills" (in 2 weeks).
 **Today's Focus:** The practical example (SIR Model).
 
-## 6. Selected Demo Plan: SIR Model
+## 6. Master Prompt List (Copy/Paste Ready)
 
-**Goal:** Build a simulator for disease spread and fit it to data.
+### Part 1: Setup
 
-### Step 1: Blank Slate to Simulation
-*   Prompt: "Create a Python project for an SIR (Susceptible-Infected-Recovered) model using `scipy.integrate.odeint`."
-*   *Highlight:* It sets up folder structure (`src/`, `data/`) automatically.
+**Prompt 1.1: Understand Workspace**
+```
+Can you look at this workspace and tell me what it contains? 
+Summarize the project structure and its purpose.
+```
 
-### Step 2: Running the Model
-*   Prompt: "Simulate an outbreak with N=1000, beta=0.3, gamma=0.1. Plot the curves."
-*   *Highlight:* It chooses reasonable visualization defaults.
+**Prompt 1.2: Env Setup**
+```
+Set up a Python virtual environment for this project. 
+We'll need numpy, scipy, matplotlib, and pandas for scientific computing.
+Create a requirements.txt file.
+```
 
-### Step 3: Adding Real Data (The "Extension")
-*   *Idea:* Use a small hardcoded dataset or a CSV representing "Influenza 1918" or "COVID 2020".
-*   Prompt: "Here is a list of weekly case counts: [10, 50, 200, 800...]. Plot this data on top of the simulation."
-*   *Highlight:* Combining synthetic and real data.
+**Prompt 1.3: Scaffolding**
+```
+Create a basic Python project structure for a scientific simulation.
+Include:
+- A main.py entry point
+- A src/ directory for modules
+- A tests/ directory for unit tests
+- A data/ directory (empty, for input data)
+- A results/ directory (empty, for outputs)
+```
 
-### Step 4: Fitting (Advanced/Optional)
-*   Prompt: "Use `scipy.optimize.minimize` to estimate the best `beta` and `gamma` that fit this data."
-*   *Highlight:* This is a complex task that usually takes a human 30 mins; Agent takes 30 secs.
+### Part 2: SIR Simulation
+
+**Prompt 2.1: Project Init**
+```
+Create a Python project structure for simulating an SIR epidemic model.
+Include:
+- A main simulation script
+- A module for the model equations
+- A visualization script
+- Proper docstrings and type hints
+```
+
+**Prompt 2.2: Implement Model**
+```
+Implement the SIR model differential equations in the model module.
+The model should track:
+- S(t): Susceptible population
+- I(t): Infected population  
+- R(t): Recovered population
+
+Parameters:
+- β (beta): transmission rate
+- γ (gamma): recovery rate
+- N: total population (constant)
+
+Use scipy.integrate.odeint for numerical integration.
+```
+
+**Prompt 2.3: Run Sim**
+```
+Update the main script to run a simulation with these parameters:
+- Population N = 1000
+- Initial infected I0 = 1
+- Transmission rate β = 0.3
+- Recovery rate γ = 0.1
+- Simulate for 160 days
+
+Print summary statistics at the end (peak infection, time to peak, final recovered).
+```
+
+**Prompt 2.4: Visualize**
+```
+Create a visualization that shows S, I, R curves over time.
+Requirements:
+- Clear axis labels with units (days, population)
+- Legend identifying each curve
+- Title including the key parameters (β, γ)
+- Use a clean, publication-ready style (not default matplotlib)
+- Save the figure to results/sir_simulation.png at 300 DPI
+```
+
+**Prompt 2.5: Explain Results**
+```
+Look at the plot `results/sir_simulation.png` (or the code used to generate it).
+Explain what is happening in the simulation.
+- What is the peak number of infected people?
+- When does it occur?
+- Why does the epidemic end?
+```
+
+**Prompt 2.6: Sensitivity**
+```
+Create a function that runs the SIR model for a range of β values (0.1 to 0.5).
+For each β, record the peak infection count and time to peak.
+Plot these as a function of β in a two-panel figure.
+```
+
+**Prompt 2.6a: Explain Change**
+```
+Look at the new results.
+- How did changing beta to 0.5 affect the peak parameters?
+- Is the relationship linear?
+```
+
+**Prompt 2.7: Agent Reviewer**
+```
+Act as a Senior Python Engineer Code Reviewer.
+Review the current codebase (model.py, main.py, visualize.py).
+Identify issues in:
+1. **Hardcoded values** (should be constants/config)
+2. **Type Hints** and Documentation
+3. **Modularity**
+
+Provide specific refactoring instructions but DO NOT apply them yet.
+```
+
+**Prompt 2.8: Apply Fixes**
+```
+Here is the code review feedback:
+[PASTE REVIEW FEEDBACK HERE]
+
+Please apply these changes to the codebase. Ensure the simulation still produces the same results after refactoring.
+```
+
+**Prompt 2.9: Write Report**
+```
+Write a brief "Scientific Report" (latex/pdf convertible markdown) summarizing the work:
+1. **Methods:** Description of the SIR model and parameters used.
+2. **Results:** Summary of the findings (peak infection, sensitivity to beta).
+3. **Validation:** Mention that code was reviewed and results reproduced.
+
+Save this as `results/report.md`.
+Then, run a terminal command to convert it to PDF using pandoc: `pandoc results/report.md -o results/report.pdf`
+```
+
+**Prompt 2.10: Science Reviewer**
+```
+Act as a Senior Epidemiologist.
+Read the report at `results/report.md`.
+Critique the scientific quality:
+1. **Clarity:** Is the methodology well-explained?
+2. **Results:** Do the findings make sense for an SIR model?
+3. **Limitations:** Did the author mention the limitations of fixed parameters?
+
+Provide constructive feedback for the next manuscript draft.
+```
+
+### Part 3: Real Data Analysis
+
+**Prompt 3.1: Load Data**
+```
+Create a synthetic dataset representing "Real World Statistics" for an outbreak.
+- Weeks: 0 to 8
+- Cases: [15, 60, 250, 900, 2800, 4500, 3000, 900, 100]
+- Total Population: 10,000
+
+Load this into a pandas DataFrame and plot it as scatter points with error bars (assume sqrt(N) error).
+```
+
+**Prompt 3.1a: Explain Data**
+```
+Look at the scatter plot.
+- Describe the trend. Does it look exponential at first?
+- When does it peak?
+- Are the error bars realistic for these counts?
+```
+
+**Prompt 3.2: Fit Model**
+```
+We want to fit our SIR model to this data.
+Create a function that:
+1. Takes (beta, gamma) as inputs.
+2. Runs the simulation for 60 days.
+3. Interpolates the simulation results to match the "Weekly" data points.
+4. Returns the Sum of Squared Errors (SSE) between model and data.
+
+Then, use `scipy.optimize.minimize` to find the best beta and gamma.
+```
+
+**Prompt 3.2a: Interpret Params**
+```
+Based on the optimized `beta` and `gamma`:
+1. Calculate the Basic Reproduction Number (R0 = beta/gamma).
+2. Is this R0 characteristic of a highly infectious disease (like Measles) or a moderate one (like Flu)?
+3. What is the expected duration of infection (1/gamma)?
+```
+
+**Prompt 3.3: Final Plot**
+```
+Create a final plot showing:
+1. The "Real Data" as scatter points with error bars.
+2. The "Best Fit Simulation" as a smooth curve.
+3. Display the optimized R0 value (beta/gamma) in the title.
+4. Save as `results/fitted_model.png`.
+```
+
+**Prompt 3.3a: Critique**
+```
+Critically evaluate the fit shown in `results/fitted_model.png`.
+- Does the model capture the peak correctly?
+- Does it capture the tail?
+- The SIR model assumes a constant population/mixing. Where does this assumption fail for real epidemics?
+```
 
 ## 7. Q&A Prep
 *   **"Can I run this on my sensitive patient data?"** -> Use Local Models (DeepSeek R2 / Llama 4) via Cline or Ollama.

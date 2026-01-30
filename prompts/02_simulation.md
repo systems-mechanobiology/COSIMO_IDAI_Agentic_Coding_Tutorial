@@ -147,15 +147,35 @@ Please apply these changes to the codebase. Ensure the simulation still produces
 *Now we switch personas again: from Coder to Author.*
 
 ```
-Write a brief "Scientific Report" (markdown) summarizing the work:
+Write a brief "Scientific Report" (latex/pdf convertible markdown) summarizing the work:
 1. **Methods:** Description of the SIR model and parameters used.
 2. **Results:** Summary of the findings (peak infection, sensitivity to beta).
 3. **Validation:** Mention that code was reviewed and results reproduced.
 
 Save this as `results/report.md`.
+Then, run a terminal command to convert it to PDF using pandoc: `pandoc results/report.md -o results/report.pdf`
 ```
 
 **What to highlight:** Documentation is key. This prepares the material for the next layer of review (The "Scientist" persona).
+
+---
+
+## Prompt 2.10: Science Reviewer Agent
+
+*Final Step: Peer Review. We ask a "Scientist" persona to review the report.*
+
+```
+Act as a Senior Epidemiologist.
+Read the report at `results/report.md`.
+Critique the scientific quality:
+1. **Clarity:** Is the methodology well-explained?
+2. **Results:** Do the findings make sense for an SIR model?
+3. **Limitations:** Did the author mention the limitations of fixed parameters?
+
+Provide constructive feedback for the next manuscript draft.
+```
+
+**What to highlight:** AI reviewing AI (Science layer). This is the final quality gate.
 
 ---
 

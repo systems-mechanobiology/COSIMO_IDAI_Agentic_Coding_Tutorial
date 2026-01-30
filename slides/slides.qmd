@@ -238,12 +238,18 @@ Let's see what the agent produces...
 ---
 
 ## Prompt 3: Visualization
-
 ::: {.prompt-box}
 "Create a visualization that shows S, I, R curves over time. Add proper labels, legend, and a title. Use a clean, publication-ready style."
 :::
 
 ---
+
+## Prompt 4: Explain & Review
+::: {.prompt-box}
+"Look at the plot. Explain what is happening. What is the peak infected count and when does it occur?"
+:::
+
+*Key Insight:* The agent acts as a **tutor** and **reviewer**.
 
 ## Talking to AI with Scientific Intent
 
@@ -269,26 +275,26 @@ Open `prompts/03_analysis.md` for the prompts we'll use.
 
 ---
 
-## Prompt 1: Load and Explore Data
+## Prompt 1: Load Real Data
 
 ::: {.prompt-box}
-"Load the experimental data from data/measurements.csv. Show me the first few rows, data types, and basic statistics. Identify any missing values or anomalies."
+"Create a synthetic dataset representing an outbreak (Cases: [15, 60, ...]). Load this into a pandas DataFrame and plot it as scatter points."
 :::
 
 ---
 
-## Prompt 2: Statistical Analysis
+## Prompt 2: Fit Simulation to Data
 
 ::: {.prompt-box}
-"Perform a statistical comparison between the control and treatment groups. Use an appropriate test based on the data distribution. Report the test statistic, p-value, and effect size."
+"Create a function that runs the SIR simulation and estimates the best `beta` and `gamma` parameters that minimize the squared error with the real data."
 :::
 
 ---
 
-## Prompt 3: Publication Figure
+## Prompt 3: Critique the Fit
 
 ::: {.prompt-box}
-"Create a publication-quality figure comparing the two groups. Include error bars, individual data points, and significance annotations. Save as both PNG and PDF at 300 DPI."
+"Critically evaluate the final plot. Does the model capture the peak correctly? Where does the simple SIR assumption fail?"
 :::
 
 ---
