@@ -15,13 +15,18 @@ import matplotlib.dates as mdates
 from pathlib import Path
 from datetime import datetime, timedelta
 
-# Import from our fitting module
-import sys
-sys.path.insert(0, str(Path(__file__).parent))
-from fit_sir_model import (
-    fit_sir_model, run_sir_simulation, 
-    DATA_FILE, N_POPULATION, SIMULATION_DAYS
-)
+# Import from our fitting module (same directory)
+# Works whether run as script or module
+try:
+    from fit_sir_model import (
+        fit_sir_model, run_sir_simulation, 
+        DATA_FILE, N_POPULATION, SIMULATION_DAYS
+    )
+except ImportError:
+    from .fit_sir_model import (
+        fit_sir_model, run_sir_simulation, 
+        DATA_FILE, N_POPULATION, SIMULATION_DAYS
+    )
 
 # Configuration
 OUTPUT_FILE = Path(__file__).parent.parent / "results" / "covid_italy_sir_fit.png"

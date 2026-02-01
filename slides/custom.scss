@@ -54,6 +54,16 @@ $body-bg: #ffffff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   }
 
+  // Warning boxes (for disclaimers, live demo notices)
+  .warning-box {
+    background: #fff3cd;
+    border-left: 4px solid #ffc107;
+    padding: 1rem;
+    font-size: 0.9em;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin: 0.5em 0;
+  }
+
   // Reposition Logo to Bottom Left via CSS override
   .slide-logo {
     left: 40px !important; // Increased margin for balance

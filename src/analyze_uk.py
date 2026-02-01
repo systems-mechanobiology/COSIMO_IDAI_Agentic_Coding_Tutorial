@@ -83,37 +83,30 @@ def sir_derivatives(y, t, N, beta, gamma):
 
 
 def run_sir_timevarying(params, N, I0, days, lockdown_day):
+    """Run time-varying SIR using odeint for consistency with other scripts."""
     beta_pre, beta_post, gamma = params
     
-    t = np.linspace(0, days, days + 1)
-    S = np.zeros(days + 1)
-    I = np.zeros(days + 1)
-    R = np.zeros(days + 1)
+    def derivatives(y, t):
+        S, I, R = y
+        beta = beta_pre if t < lockdown_day else beta_post
+        dSdt = -beta * S * I / N
+        dIdt = beta * S * I / N - gamma * I
+        dRdt = gamma * I
+        return [dSdt, dIdt, dRdt]
     
-    S[0], I[0], R[0] = N - I0, I0, 0
+    t = np.linspace(0, days, days * 10 + 1)  # Higher resolution
+    y0 = [N - I0, I0, 0]
     
-    # Run simulation step-by-step to allow changing beta
-    for i in range(days):
-        beta = beta_pre if i < lockdown_day else beta_post
-        
-        # Simple Euler for clarity (or step-wise odeint)
-        # Using small steps for stability
-        steps = 10
-        dt = 1/steps
-        s, i_curr, r = S[i], I[i], R[i]
-        
-        for _ in range(steps):
-            ds = -beta * s * i_curr / N
-            di = beta * s * i_curr / N - gamma * i_curr
-            dr = gamma * i_curr
-            
-            s += ds * dt
-            i_curr += di * dt
-            r += dr * dt
-            
-        S[i+1], I[i+1], R[i+1] = s, i_curr, r
-        
-    return t, S, I, R
+    solution = odeint(derivatives, y0, t)
+    S, I, R = solution.T
+    
+    # Downsample to integer days for compatibility
+    t_days = np.arange(days + 1)
+    S_days = np.interp(t_days, t, S)
+    I_days = np.interp(t_days, t, I)
+    R_days = np.interp(t_days, t, R)
+    
+    return t_days, S_days, I_days, R_days
 
 
 def fit_model(df):

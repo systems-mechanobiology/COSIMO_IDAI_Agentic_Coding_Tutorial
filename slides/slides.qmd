@@ -3,7 +3,7 @@ title: "Agentic Coding"
 subtitle: "From Idea to Proof-of-Concept in One Hour"
 author: "Fabian Spill"
 institute: "COSIMO-IDAI Seminar Series"
-date: "2025-02-13"
+date: "2026-02-13"
 format: revealjs
 ---
 
@@ -221,7 +221,7 @@ We'll build a simple epidemiological simulation **from scratch**.
 
 ::: {.warning-box}
 **Live Demo Ahead!** 🎬  
-Open `prompts/02_simulation.md` for the prompts we'll use.
+Open `planning/contents_brainstorming.md` §6 for the prompts we'll use.
 :::
 
 ---
@@ -438,8 +438,8 @@ We'll fit our SIR model to real pandemic data from Italy's first wave.
 
 ## Resources
 
-- **This repo**: `github.com/[your-org]/COSIMO_IDAI_Agentic_Coding_Tutorial`
-- **Prompts used today**: `prompts/` directory
+- **This repo**: `github.com/fab321/COSIMO_IDAI_Agentic_Coding_Tutorial`
+- **Prompts used today**: `planning/contents_brainstorming.md` §6
 - **Example outputs**: `examples/` directory
 
 ::: {.notes}

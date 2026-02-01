@@ -123,7 +123,9 @@ def fit_timevarying_sir(df: pd.DataFrame) -> TimeVaryingResult:
             I_model = I_interp(data_days)
             sse = np.sum((I_model - data_active) ** 2)
             return sse
-        except:
+        except (ValueError, RuntimeError, FloatingPointError) as e:
+            import logging
+            logging.debug(f"Time-varying SIR integration failed: {e}")
             return 1e20
     
     # Grid search for initial guess
@@ -264,8 +266,11 @@ def main():
     # Fit time-varying model
     tv_result = fit_timevarying_sir(df)
     
-    # Get constant-β SSE for comparison (from previous fit)
-    const_sse = 4.18e11  # From our constant-β fit
+    # Compute constant-β SSE dynamically for comparison
+    # (Previously hard-coded as 4.18e11, but that breaks when data changes)
+    from fit_sir_model import fit_sir_model
+    const_result = fit_sir_model(df)
+    const_sse = const_result.sse
     
     print("\n" + "=" * 60)
     print("RESULTS")

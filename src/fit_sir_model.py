@@ -172,7 +172,10 @@ def create_objective_function(
             
             return sse
             
-        except Exception:
+        except (ValueError, RuntimeError, FloatingPointError) as e:
+            # Log integration failures for debugging
+            import logging
+            logging.debug(f"SIR integration failed: {e}")
             return 1e20
     
     return objective
@@ -288,7 +291,11 @@ def main():
     print(f"Derived Quantities:")
     print(f"  R₀ = β/γ:               {result.R0:.2f}")
     print(f"  Infectious period 1/γ:  {1/result.gamma:.1f} days")
-    print(f"  Doubling time:          {np.log(2) / (result.beta - result.gamma):.1f} days")
+    # Guard against β ≈ γ which causes division by zero
+    if abs(result.beta - result.gamma) > 0.001:
+        print(f"  Doubling time:          {np.log(2) / (result.beta - result.gamma):.1f} days")
+    else:
+        print(f"  Doubling time:          N/A (β ≈ γ)")
     print()
     print(f"Fit Quality:")
     print(f"  Sum of Squared Errors:  {result.sse:.2e}")

@@ -111,7 +111,9 @@ def fit_improved_sir(df):
             
             sse = np.sum(weights * (I_model - data_active) ** 2)
             return sse
-        except:
+        except (ValueError, RuntimeError, FloatingPointError) as e:
+            import logging
+            logging.debug(f"Improved SIR integration failed: {e}")
             return 1e20
     
     print("Fitting improved model with differential evolution...")

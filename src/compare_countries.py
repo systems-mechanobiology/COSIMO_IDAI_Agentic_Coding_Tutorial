@@ -107,7 +107,9 @@ def fit_country(df, config):
             I_model = I_interp(data_days)
             sse = np.sum((I_model - data_active) ** 2)
             return sse
-        except:
+        except (ValueError, RuntimeError, FloatingPointError) as e:
+            import logging
+            logging.debug(f"Country fit integration failed: {e}")
             return 1e20
     
     bounds = [
