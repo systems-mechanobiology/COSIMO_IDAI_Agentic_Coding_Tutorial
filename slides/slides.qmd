@@ -7,8 +7,22 @@ date: "2026-02-13"
 format: revealjs
 ---
 
+---
 
-## COSIMO-IDAI Series: Accelerating Research
+## Today's Agenda
+
+::: {.incremental}
+- **Brief overview** of the aim of this series
+- **Brief overview** of coding agents
+- **Live demonstration** of addressing a *scientific* problem using AI
+- **Example domains**: simulation code, data analysis pipeline
+:::
+
+::: {.notes}
+Welcome everyone. Today we'll see how AI coding agents can accelerate research.
+:::
+
+## COSIMO-IDAI Generative AI Series: Accelerating Research and Teaching Thorugh Appropriate Use of AI
 
 **Overall Purpose:**
 AI is now integral to science, but **rapid evolution** and **opaque failure modes** make reliable usage difficult.
@@ -28,6 +42,34 @@ Target audience: PhD students, postdocs, PIs, and RSEs across all disciplines.
 
 ---
 
+## COSIMO-IDAI Generative AI Series
+
+
+::: {.incremental}
+- Today's Topic: From Idea to Proof-of-Concept in One Hour, Fabian Spill
+- 27/2/2026: Multi-agentic Workflows: Orchestrating Coding Agents with CLI Tools, skills.md, and MCPs, Cesar Contreras
+- TBC: Ethical Considerations of Generative AI in Research, Kamilla Kopec-Harding
+- TBC: Generative AI in Education, Generative AI for Grant Writing
+- TBC: You
+:::
+
+::: {.notes}
+
+:::
+---
+
+## Join the Community!
+
+**We are building a Community of Practice.**
+
+::: {.incremental}
+- 📢 **Contribute**: Share your prompts or workflows in future sessions
+- 🏳️ **Skeptics Welcome**: Present AI failures — are they inherent or fixable?
+:::
+
+
+---
+
 ## Disclaimer: Important Policy Notice
 
 ::: {.warning-box}
@@ -42,33 +84,9 @@ Tests for compliant advanced models are underway.
 - Export Control / Restricted IP
 - Clinical Data
 
-💡 **Best Practice:** Use **isolated environments** (VMs, containers, clean accounts).
+💡 **Best Practice:** Use **isolated environments** (VMs, containers, clean accounts), control permissions and data provenance.
 
----
 
-## Join the Community!
-
-**We are building a Community of Practice.**
-
-::: {.incremental}
-- 📢 **Contribute**: Share your prompts or workflows in future sessions
-- 🏳️ **Skeptics Welcome**: Present AI failures — are they inherent or fixable?
-- ⚖️ **Ethics Sessions**: Specific sessions planned for later this year
-:::
-
----
-
-## Welcome: Agentic Coding
-
-::: {.incremental}
-- **Brief overview** of coding agents
-- **Live demonstration** of addressing a *scientific* problem using AI
-- **Example domains**: simulation code, data analysis pipeline
-:::
-
-::: {.notes}
-Welcome everyone. Today we'll see how AI coding agents can accelerate research.
-:::
 
 ---
 
