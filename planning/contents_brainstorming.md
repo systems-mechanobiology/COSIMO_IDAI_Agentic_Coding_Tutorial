@@ -55,30 +55,25 @@
 
 ## 3. The Model Landscape (2026 Usage)
 
-### 1. The "Thinking" Tier (Reasoning Models)
-*   **Best for:** Reliable daily coding, refactoring, docs.
-*   **Examples:**
-    *   **OpenAI:** GPT-5.2 Thinking.
-    *   **DeepSeek:** DeepSeek R2.
-    *   **Anthropic:** Claude 4.5 Sonnet.
+> Model/version names change quickly. For the seminar, focus on **capabilities** and **constraints** (latency, cost, privacy, tool access), not brand names.
 
-### 2. The "Pro" Tier (Instruction Models)
-*   **Best for:** Complex architecture, mathematical derivations, hard debugging.
-*   **Examples:**
-    *   **OpenAI:** GPT-5.2 Pro.
-    *   **Google:** Gemini DeepThink.
-    *   **Anthropic:** Claude 4.5 Opus.
+### 1. Fast / General Models ("daily drivers")
+*   **Best for:** Boilerplate, refactors, documentation, data wrangling, plotting.
+*   **Examples (non-exhaustive):** Commercial chat models from major providers (OpenAI / Anthropic / Google) and their IDE copilots.
 
-### 3. Open Weights (Local-able)
-*   **Note:** Often called "Open Source" but technically "Open Weights".
-*   **Examples:** Llama 4 (405B), Mistral Large, DeepSeek V3 (Weights available).
+### 2. Reasoning / Deliberative Models ("slow but careful")
+*   **Best for:** Derivations, tricky debugging, planning multi-step tasks.
+*   **Prompting tip:** Ask for a short derivation + a minimal test/verification plan *before* generating lots of code.
 
-### 3. Agentic Frameworks (The "Drivers")
-*   **Leading Tools:**
-    *   **Cursor:** "Composer" mode.
-    *   **GitHub Copilot Agent:** Deep integration in VS Code ecosystem.
-    *   **Claude Code:** Anthropic's CLI-based agent.
-    *   **Cline:** Open-source, flexible backend.
+### 3. Open-Weight Models (Local / Private / Cost-Controlled)
+*   **Note:** Often called "open source", but more accurately "**open weights**".
+*   **Best for:** Running locally (no data egress), air-gapped demos, or constrained budgets.
+*   **Examples (families):** Llama-family, Mistral-family, DeepSeek-family (and similar).
+
+### 4. Agentic Tooling (The "Hands")
+*   **IDE-integrated:** Cursor, GitHub Copilot, VS Code agent extensions.
+*   **CLI agents:** Codex CLI, Claude Code, Gemini CLI, Cline, Aider.
+*   **Orchestration frameworks (optional):** LangGraph, AutoGen, CrewAI.
 
 ## 4. Key Concept: Scientific Intent
 
@@ -155,6 +150,11 @@ Parameters:
 - γ (gamma): recovery rate
 - N: total population (constant)
 
+Use the standard population-normalized (mass-action) form:
+- dS/dt = -β * S * I / N
+- dI/dt =  β * S * I / N - γ * I
+- dR/dt =  γ * I
+
 Use scipy.integrate.odeint for numerical integration.
 ```
 
@@ -199,9 +199,9 @@ Plot these as a function of β in a two-panel figure.
 
 **Prompt 2.6a: Explain Change**
 ```
-Look at the new results.
-- How did changing beta to 0.5 affect the peak parameters?
-- Is the relationship linear?
+Look at the sensitivity plot.
+- How does increasing β change peak infections and time-to-peak?
+- Is the relationship roughly linear over β ∈ [0.1, 0.5]? Where does it deviate?
 ```
 
 **Prompt 2.7: Agent Reviewer**
@@ -544,5 +544,5 @@ https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_d
 > Dong E, Du H, Gardner L. An interactive web-based dashboard to track COVID-19 in real time. Lancet Inf Dis. 20(5):533-534. doi: 10.1016/S1473-3099(20)30120-1
 
 ## 7. Q&A Prep
-*   **"Can I run this on my sensitive patient data?"** -> Use Local Models (DeepSeek R2 / Llama 4) via Cline or Ollama.
-*   **"It gets the math wrong."** -> Use a Reasoning Model (o3/R1) for the derivation step, then switched to an Instruction Model for the coding.
+*   **"Can I run this on my sensitive patient data?"** -> Follow policy. Prefer approved tools, or run an open-weight model locally in an isolated environment (no data upload) if permitted.
+*   **"It gets the math wrong."** -> Ask for the derivation + a verification plan (sanity checks / unit tests), then generate the implementation and validate against those checks.

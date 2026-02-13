@@ -86,7 +86,7 @@ Target audience: PhD students, postdocs, PIs, and RSEs across all disciplines.
 ## Disclaimer: Important Policy Notice
 
 ::: {.warning-box}
-**University Policy:** Currently, only **M365 Copilot** is officially supported.
+**University Policy (as of Feb 2026):** Only **M365 Copilot** is officially supported.
 Tests for compliant advanced models are underway.
 :::
 
@@ -157,8 +157,9 @@ Tests for compliant advanced models are underway.
 
 | Tier | Use Case | Key Models (2026) |
 |------|----------|-------------------|
-| **Thinking** | Daily tasks, coding | GPT-5.2 Think, DeepSeek R2, Claude 4.5 Sonnet |
-| **Pro** | Maths & Derivations | GPT-5.2 Pro, Gemini DeepThink, Claude 4.6 Opus |
+| **Fast / General** | Autocomplete, simple refactors, speed | GPT-4o-2026, Claude 3.5 Haiku, Gemini 2.0 Flash |
+| **Thinking** | Hard logic, architecture, debugging | GPT-5.2 Think, DeepSeek R2, Claude 4.5 Sonnet |
+| **Pro / Frontier** | Complex maths, massive context | GPT-5.2 Pro, Gemini DeepThink, Claude 4.6 Opus |
 | **Open Weights** | Local / Private / Cheap | Llama 4, Mistral Large, DeepSeek V3, Kimi K2.5 |
 
 ### II. The Hands (The Agentic Tools)
@@ -195,9 +196,9 @@ The agent knows how to write loops. **You** know what an SIR model is.
 
 | Tool | Purpose |
 |------|---------|
-| **VS Code / Cursor / Antigravity** | IDE with agent integration |
-| **Gemini / Claude** | The underlying LLM |
-| **Python** | Our target language |
+| **Agent-enabled IDE** | VS Code + agent integration (Cursor / Copilot / Codex Desktop / etc.) |
+| **LLM backend** | OpenAI / Anthropic / Google / open-weight local models |
+| **Python + SciPy stack** | numpy, scipy, pandas, matplotlib |
 
 ::: {.notes}
 These tools are accessible to anyone with basic coding familiarity.
@@ -205,7 +206,7 @@ These tools are accessible to anyone with basic coding familiarity.
 
 ---
 
-## Part 2: From Blank Repo to Prototype
+## Part 2: From Blank File to Prototype
 
 We'll build a simple epidemiological simulation **from scratch**.
 
@@ -241,6 +242,7 @@ We want to go from **blank file** to **working simulation** of a pandemic (SIR m
 - **S**: Susceptible
 - **I**: Infected
 - **R**: Recovered
+- **N**: Total population (constant)
 
 We will build this *live* to demonstrate the power of **Coding Agents**.
 :::
@@ -248,8 +250,8 @@ We will build this *live* to demonstrate the power of **Coding Agents**.
 ::: {.column width="40%"}
 $$
 \begin{aligned}
-\frac{dS}{dt} &= -\beta S I \\
-\frac{dI}{dt} &= \beta S I - \gamma I \\
+\frac{dS}{dt} &= -\beta \frac{S I}{N} \\
+\frac{dI}{dt} &= \beta \frac{S I}{N} - \gamma I \\
 \frac{dR}{dt} &= \gamma I
 \end{aligned}
 $$
@@ -278,7 +280,7 @@ Let's see what the agent produces...
 ## Prompt 2: Implement the Model
 
 ::: {.prompt-box}
-Implement the SIR model differential equations. The model should track Susceptible, Infected, and Recovered populations over time. Use scipy.integrate.odeint for integration.
+Implement the SIR model differential equations using the standard population-normalized form (β*S*I/N). The model should track Susceptible, Infected, and Recovered populations over time. Use scipy.integrate.odeint for integration.
 :::
 
 ---
@@ -401,7 +403,7 @@ Repeat the SIR fitting for South Korea. Create a side-by-side comparison with It
 Use bootstrap resampling to estimate 95% confidence intervals for R₀. Visualize the uncertainty as a shaded band around the model curve.
 :::
 
-*Point estimates without uncertainty can be misleading!**
+**Point estimates without uncertainty can be misleading!**
 
 ---
 
