@@ -1,8 +1,8 @@
 ---
-title: "Agentic Coding"
+title: "COSIMO-IDAI Generative AI Series: Agentic Coding"
 subtitle: "From Idea to Proof-of-Concept in One Hour"
 author: "Fabian Spill"
-institute: "COSIMO-IDAI Seminar Series"
+institute: "School of Mathematics, University of Birmingham"
 date: "2026-02-13"
 format: revealjs
 ---
@@ -15,17 +15,30 @@ format: revealjs
 - **Brief overview** of the aim of this series
 - **Brief overview** of coding agents
 - **Live demonstration** of addressing a *scientific* problem using AI
-- **Example domains**: simulation code, data analysis pipeline
+- **Example domains**: SIR modelling and simulation code, data analysis pipeline
 :::
 
 ::: {.notes}
 Welcome everyone. Today we'll see how AI coding agents can accelerate research.
 :::
 
-## COSIMO-IDAI Generative AI Series: Accelerating Research and Teaching Thorugh Appropriate Use of AI
+## COSIMO-IDAI Generative AI Series: Accelerating Science Through Appropriate Use of AI
 
 **Overall Purpose:**
-AI is now integral to science, but **rapid evolution** and **opaque failure modes** make reliable usage difficult.
+AI is now integral to science, but we must optimize for **both speed and robustness**.
+
+::: {.columns}
+::: {.column width="50%"}
+**The Goal: Shift the Pareto Front**
+We don't just want to move *faster* along the same trade-off curve.
+
+We want to **expand the frontier**, enabling research that is both rapid **and** reproducible.
+:::
+
+::: {.column width="50%"}
+![](assets/pareto_front.png)
+:::
+:::
 
 **This series aims to:**
 
@@ -90,51 +103,9 @@ Tests for compliant advanced models are underway.
 
 ---
 
-## The Challenge: Our Goal Today
 
-**Remember the pandemic?** The famous **R number**?
 
-We want to simulate that spread.
-
-$$ \text{Susceptible} \rightarrow \text{Infected} \rightarrow \text{Recovered} $$
-
-**The Mission:**
-
-1.  **Build** this simulation code from scratch.
-2.  **Visualise** the outbreak.
-3.  **Analyse** it with data.
-
-*...without writing the code ourselves.*
-
----
-
-## Part 1: The Math Behind the Model
-
-::: {.columns}
-::: {.column width="60%"}
-We want to go from **blank file** to **working simulation** of a pandemic (SIR model).
-
-- **S**: Susceptible
-- **I**: Infected
-- **R**: Recovered
-
-We will build this *live* to demonstrate the power of **Coding Agents**.
-:::
-
-::: {.column width="40%"}
-$$
-\begin{aligned}
-\frac{dS}{dt} &= -\beta S I \\
-\frac{dI}{dt} &= \beta S I - \gamma I \\
-\frac{dR}{dt} &= \gamma I
-\end{aligned}
-$$
-:::
-:::
-
----
-
-## 1.5. From Autocomplete to Agents
+## Part 1: A Brief History of AI Coding Assistants: From Autocomplete to Agents
 
 **Two Converging Paths:**
 
@@ -167,63 +138,64 @@ $$
 
 ## The Convergence: Coding Agents
 
-*   **Interaction:** Agent has **terminal** and **file access**
+*   **Interaction:** Agent has **terminal**/**ide** and **file access**
 *   **The Paradigm Shift:**
     *   Old: REPL (Read-Eval-Print) controlled by **Human**
     *   New: **Plan-Act-Observe** controlled by **Agent**
 *   **The Loop:**
     1.  **Plan:** "Calculate pairwise distances between atoms"
-    2.  **Act:** Writes script using `scipy.spatial`
+    2.  **Act:** Writes script using appropriate libraries
     3.  **Observe:** Sees `MemoryError`
-    4.  **Refine:** "Switch to sparse matrix"
+    4.  **Debugs and Refines:** "Switch to sparse matrix"
 *   **Why it matters:** Closes the feedback loop *without human intervention*
 
 ---
 
 ## The AI Landscape (2026): Models & Tools
 
-| Tier | Description | Models (2026) |
-|------|-------------|---------------|
-| **Thinking** | Reliable daily coding | GPT-5.2 Think, DeepSeek R2, Claude 4.5 Sonnet |
-| **Pro** | Maths & Derivations | GPT-5.2 Pro, Gemini DeepThink, Claude 4.5 Opus |
-| **Open Weights** | Local / Private / Cheap | Llama 4, Mistral Large, DeepSeek V3 |
-| **Frameworks** | The UI that *acts* | Cursor, Copilot Agent, Cline, Claude Code |
+### I. The Brains (The Intelligence)
+
+| Tier | Use Case | Key Models (2026) |
+|------|----------|-------------------|
+| **Thinking** | Daily tasks, coding | GPT-5.2 Think, DeepSeek R2, Claude 4.5 Sonnet |
+| **Pro** | Maths & Derivations | GPT-5.2 Pro, Gemini DeepThink, Claude 4.6 Opus |
+| **Open Weights** | Local / Private / Cheap | Llama 4, Mistral Large, DeepSeek V3, Kimi K2.5 |
+
+### II. The Hands (The Agentic Tools)
+
+| Category | Interface Mode | Examples |
+|----------|----------------|----------|
+| **IDE integrated** | "Co-pilot" / Chat Sidebar | Cursor, GitHub Copilot |
+| **Autonomous / CLI** | "Go do this task" | Cline, Claude Code, Gemini CLI, Codex CLI |
+| **Multi-Agent / Managers** | Architect / Orchestrator | Codex Desktop, Antigravity |
 
 ---
 
-## Key Insight: Scientific Intent, Not Syntax
+## Key Insight: Be Specific about the *Goal*, not the *Syntax*
 
 ::: {.prompt-box}
-❌ "Write a for loop that iterates through the list and calculates the mean"
+❌ Write a for loop that iterates through the list and calculates the mean
 :::
 
 ::: {.prompt-box}
-✅ "Implement an SIR epidemic model with transmission rate β and recovery rate γ"
+✅ Implement an SIR epidemic model with transmission rate β and recovery rate γ
 :::
 
 The agent knows how to write loops. **You** know what an SIR model is.
 
----
-
-## More Examples of Scientific Intent
-
-::: {.prompt-box}
-❌ "Use matplotlib to make a red line plot."
-:::
-
-::: {.prompt-box}
-✅ "Create a publication-quality figure comparing Treatment A vs B. Use seaborn paper style, remove top/right spines, add error bars (SEM), annotate significance."
-:::
-
-**Specific style tokens steer the model better than vague requests.**
+**Rule of Thumb:**
+- **Don't** micromanage the code (syntax)
+- **Do** micromanage the output (science/style)
 
 ---
+
+
 
 ## Tools We'll Use Today
 
 | Tool | Purpose |
 |------|---------|
-| **VS Code / Cursor** | IDE with agent integration |
+| **VS Code / Cursor / Antigravity** | IDE with agent integration |
 | **Gemini / Claude** | The underlying LLM |
 | **Python** | Our target language |
 
@@ -239,7 +211,56 @@ We'll build a simple epidemiological simulation **from scratch**.
 
 ::: {.warning-box}
 **Live Demo Ahead!** 🎬  
-Open `planning/contents_brainstorming.md` §6 for the prompts we'll use.
+
+:::
+
+## The Challenge: Our Goal Today
+
+**Remember the pandemic?** The famous **R number**?
+
+We want to simulate that spread.
+
+$$ \text{Susceptible} \rightarrow \text{Infected} \rightarrow \text{Recovered} $$
+
+**The Mission:**
+
+1.  **Build** this simulation code from scratch.
+2.  **Visualise** the outbreak.
+3.  **Analyse** it with data.
+
+*...without writing the code ourselves.*
+
+---
+
+## The Math Behind the Model
+
+::: {.columns}
+::: {.column width="60%"}
+We want to go from **blank file** to **working simulation** of a pandemic (SIR model).
+
+- **S**: Susceptible
+- **I**: Infected
+- **R**: Recovered
+
+We will build this *live* to demonstrate the power of **Coding Agents**.
+:::
+
+::: {.column width="40%"}
+$$
+\begin{aligned}
+\frac{dS}{dt} &= -\beta S I \\
+\frac{dI}{dt} &= \beta S I - \gamma I \\
+\frac{dR}{dt} &= \gamma I
+\end{aligned}
+$$
+:::
+
+**The "R Number" ($R_0$):**
+
+$$ R_0 = \frac{\beta}{\gamma} $$
+
+-   If $R_0 > 1$: Epidemic grows 📈
+-   If $R_0 < 1$: Epidemic dies out 📉
 :::
 
 ---
@@ -247,7 +268,7 @@ Open `planning/contents_brainstorming.md` §6 for the prompts we'll use.
 ## Prompt 1: Project Initialization
 
 ::: {.prompt-box}
-"Create a Python project structure for simulating an SIR epidemic model. Include a main simulation script, a module for the model equations, and a visualization script."
+Create a Python project structure for simulating an SIR epidemic model. Include a main simulation script, a module for the model equations, and a visualization script. Set out the structure without implementing any details.
 :::
 
 Let's see what the agent produces...
@@ -257,21 +278,21 @@ Let's see what the agent produces...
 ## Prompt 2: Implement the Model
 
 ::: {.prompt-box}
-"Implement the SIR model differential equations. The model should track Susceptible, Infected, and Recovered populations over time. Use scipy.integrate.odeint for integration."
+Implement the SIR model differential equations. The model should track Susceptible, Infected, and Recovered populations over time. Use scipy.integrate.odeint for integration.
 :::
 
 ---
 
 ## Prompt 3: Visualization
 ::: {.prompt-box}
-"Create a visualization that shows S, I, R curves over time. Add proper labels, legend, and a title. Use a clean, publication-ready style."
+Create a visualization that shows S, I, R curves over time. Add proper labels, legend, and a title. Use a clean, publication-ready style.
 :::
 
 ---
 
 ## Prompt 4: Explain & Review
 ::: {.prompt-box}
-"Look at the plot. Explain what is happening. What is the peak infected count and when does it occur?"
+Look at the plot. Explain what is happening. What is the peak infected count and when does it occur?
 :::
 
 *Key Insight:* The agent acts as a **tutor** and **reviewer**.
@@ -311,7 +332,7 @@ We'll fit our SIR model to real pandemic data from Italy's first wave.
 ## Prompt 1: Load Real Data
 
 ::: {.prompt-box}
-"Load the COVID-19 data for Italy from `data/covid_italy_first_wave.csv`. Plot active infections over time. Add a vertical line for the lockdown date (March 9)."
+Load the COVID-19 data for Italy from `data/covid_italy_first_wave.csv`. Plot active infections over time. Add a vertical line for the lockdown date (March 9).
 :::
 
 ---
@@ -319,7 +340,7 @@ We'll fit our SIR model to real pandemic data from Italy's first wave.
 ## Prompt 2: Fit the SIR Model
 
 ::: {.prompt-box}
-"Create a function that fits our SIR model to the Italy data. Use `scipy.optimize.minimize` to find the best β and γ. Print the estimated R0."
+Create a function that fits our SIR model to the Italy data. Use `scipy.optimize.minimize` to find the best β and γ. Print the estimated R0.
 :::
 
 ---
@@ -327,7 +348,7 @@ We'll fit our SIR model to real pandemic data from Italy's first wave.
 ## Prompt 3: Visualize and Critique
 
 ::: {.prompt-box}
-"Plot the best-fit model against the real data. Critically evaluate: where does the simple SIR assumption break down?"
+Plot the best-fit model against the real data. Critically evaluate: where does the simple SIR assumption break down?
 :::
 
 *Key insight:* The lockdown changed β — our constant-β model can't capture that!
@@ -337,7 +358,7 @@ We'll fit our SIR model to real pandemic data from Italy's first wave.
 ## Interpret the Fitted Parameters
 
 ::: {.prompt-box}
-"Based on the optimized β and γ: What is R₀? How does it compare to published estimates (2.5-3.5)? What is the implied infection duration (1/γ)?"
+Based on the optimized β and γ: What is R₀? How does it compare to published estimates (2.5-3.5)? What is the implied infection duration (1/γ)?
 :::
 
 *Teaching point:* R₀ depends on context; not an intrinsic property of the virus alone.
@@ -357,7 +378,7 @@ We'll fit our SIR model to real pandemic data from Italy's first wave.
 ## Prompt: Time-Varying Transmission
 
 ::: {.prompt-box}
-"Modify the SIR model to use β_pre before lockdown and β_post after. Fit both values and compare R₀ before and after March 9."
+Modify the SIR model to use β_pre before lockdown and β_post after. Fit both values and compare R₀ before and after March 9.
 :::
 
 *This captures what our constant-β model missed!*
@@ -367,7 +388,7 @@ We'll fit our SIR model to real pandemic data from Italy's first wave.
 ## Prompt: Country Comparison
 
 ::: {.prompt-box}
-"Repeat the SIR fitting for South Korea. Create a side-by-side comparison with Italy. Which country had lower R₀? What strategies might explain this?"
+Repeat the SIR fitting for South Korea. Create a side-by-side comparison with Italy. Which country had lower R₀? What strategies might explain this?
 :::
 
 *South Korea used aggressive testing vs Italy's lockdown approach.*
@@ -377,7 +398,7 @@ We'll fit our SIR model to real pandemic data from Italy's first wave.
 ## Prompt: Uncertainty Quantification
 
 ::: {.prompt-box}
-"Use bootstrap resampling to estimate 95% confidence intervals for R₀. Visualize the uncertainty as a shaded band around the model curve."
+Use bootstrap resampling to estimate 95% confidence intervals for R₀. Visualize the uncertainty as a shaded band around the model curve.
 :::
 
 *Point estimates without uncertainty can be misleading!**
