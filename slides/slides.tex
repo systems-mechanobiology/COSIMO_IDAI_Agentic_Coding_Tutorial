@@ -1,0 +1,841 @@
+% Options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  ignorenonframetext,
+  aspectratio=169,
+]{beamer}
+\newif\ifbibliography
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolshorizontal
+% remove section numbering
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{section title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{subsection title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+
+\usetheme[]{Madrid}
+\usecolortheme[]{beaver}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+
+
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+\usepackage{caption}
+% Make caption package work with longtable
+\makeatletter
+\def\fnum@table{\tablename~\thetable}
+\makeatother
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+
+
+
+
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
+ 
+
+
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={COSIMO-IDAI Generative AI Series: Agentic Coding},
+  pdfauthor={Fabian Spill},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{COSIMO-IDAI Generative AI Series: Agentic Coding}
+\subtitle{From Idea to Proof-of-Concept in One Hour}
+\author{Fabian Spill}
+\date{2026-02-13}
+\institute{School of Mathematics, University of Birmingham}
+
+\begin{document}
+\frame{\titlepage}
+
+
+\begin{frame}{Today's Agenda}
+\phantomsection\label{todays-agenda}
+\begin{itemize}[<+->]
+\tightlist
+\item
+  \textbf{Brief overview} of the aim of this series
+\item
+  \textbf{Brief overview} of coding agents
+\item
+  \textbf{Live demonstration} of addressing a \emph{scientific} problem
+  using AI
+\item
+  \textbf{Example domains}: SIR modelling and simulation code, data
+  analysis pipeline
+\end{itemize}
+
+\note{Welcome everyone. Today we'll see how AI coding agents can
+accelerate research.}
+\end{frame}
+
+\begin{frame}{COSIMO-IDAI Generative AI Series: Accelerating Science
+Through Appropriate Use of AI}
+\phantomsection\label{cosimo-idai-generative-ai-series-accelerating-science-through-appropriate-use-of-ai}
+\textbf{Overall Purpose:} AI is now integral to science, but we must
+optimize for \textbf{both speed and robustness}.
+
+\begin{columns}[T]
+\begin{column}{0.5\linewidth}
+\textbf{The Goal: Shift the Pareto Front} We don't just want to move
+\emph{faster} along the same trade-off curve.
+
+We want to \textbf{expand the frontier}, enabling research that is both
+rapid \textbf{and} reproducible.
+\end{column}
+
+\begin{column}{0.5\linewidth}
+\pandocbounded{\includegraphics[keepaspectratio]{assets/pareto_front.png}}
+\end{column}
+\end{columns}
+
+\textbf{This series aims to:}
+
+\begin{itemize}[<+->]
+\tightlist
+\item
+  Equip researchers with \textbf{practical, model-agnostic skills}
+\item
+  Develop \textbf{critical literacy} on failure modes
+\item
+  Promote \textbf{best practices} for reproducibility \& validation
+\item
+  Create a shared \textbf{institutional culture} around AI science
+\end{itemize}
+
+\note{Target audience: PhD students, postdocs, PIs, and RSEs across all
+disciplines.}
+\end{frame}
+
+\begin{frame}{COSIMO-IDAI Generative AI Series}
+\phantomsection\label{cosimo-idai-generative-ai-series}
+\begin{itemize}[<+->]
+\tightlist
+\item
+  Today's Topic: From Idea to Proof-of-Concept in One Hour, Fabian Spill
+\item
+  27/2/2026: Multi-agentic Workflows: Orchestrating Coding Agents with
+  CLI Tools, skills.md, and MCPs, Cesar Contreras
+\item
+  TBC: Ethical Considerations of Generative AI in Research, Kamilla
+  Kopec-Harding
+\item
+  TBC: Generative AI in Education, Generative AI for Grant Writing
+\item
+  TBC: You
+\end{itemize}
+
+\note{}
+\end{frame}
+
+\begin{frame}{Join the Community!}
+\phantomsection\label{join-the-community}
+\textbf{We are building a Community of Practice.}
+
+\begin{itemize}[<+->]
+\tightlist
+\item
+  📢 \textbf{Contribute}: Share your prompts or workflows in future
+  sessions
+\item
+  🏳️ \textbf{Skeptics Welcome}: Present AI failures --- are they
+  inherent or fixable?
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Disclaimer: Important Policy Notice}
+\phantomsection\label{disclaimer-important-policy-notice}
+\textbf{University Policy (as of Feb 2026):} Only \textbf{M365 Copilot}
+is officially supported. Tests for compliant advanced models are
+underway.
+
+\textbf{This session is for information only.}
+
+❌ \textbf{DO NOT} use these tools with: - Sensitive / Personal Data
+(GDPR) - Export Control / Restricted IP - Clinical Data
+
+💡 \textbf{Best Practice:} Use \textbf{isolated environments} (VMs,
+containers, clean accounts), control permissions and data provenance.
+\end{frame}
+
+\begin{frame}[fragile]{Part 1: A Brief History of AI Coding Assistants:
+From Autocomplete to Agents}
+\phantomsection\label{part-1-a-brief-history-of-ai-coding-assistants-from-autocomplete-to-agents}
+\textbf{Two Converging Paths:}
+
+\begin{enumerate}
+\tightlist
+\item
+  \textbf{From Autocomplete:} \texttt{Tab-Complete} → Copilot → ``Ghost
+  text''
+\item
+  \textbf{From Chatbots:} ChatGPT → Copy/Paste → Integrated Chat
+\item
+  \textbf{The Merger:} Coding Agents
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Path 1: Autocomplete (The ``Inline'' Path)}
+\phantomsection\label{path-1-autocomplete-the-inline-path}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Start:} IDE suggestions (variable names)
+\item
+  \textbf{Evolution:} GitHub Copilot (2021) --- context-aware next
+  tokens
+\item
+  \textbf{Limitation:}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Reactive, not proactive
+  \item
+    Cannot run or test its own code
+  \item
+    ``Thinks'' in small context windows (file-level)
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Path 2: Chatbots (The ``Conversational'' Path)}
+\phantomsection\label{path-2-chatbots-the-conversational-path}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Interaction:} Copy-paste into ChatGPT/Claude window
+\item
+  \textbf{Limitation:}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{The ``Clipboard Wall'':} You must manually move code back
+    and forth
+  \item
+    \textbf{Zero-shot:} If it fails, \emph{you} paste the error back
+  \item
+    \textbf{Context:} Limited to what you paste
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{The Convergence: Coding Agents}
+\phantomsection\label{the-convergence-coding-agents}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Interaction:} Agent has \textbf{terminal}/\textbf{ide} and
+  \textbf{file access}
+\item
+  \textbf{The Paradigm Shift:}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Old: REPL (Read-Eval-Print) controlled by \textbf{Human}
+  \item
+    New: \textbf{Plan-Act-Observe} controlled by \textbf{Agent}
+  \end{itemize}
+\item
+  \textbf{The Loop:}
+
+  \begin{enumerate}
+  \tightlist
+  \item
+    \textbf{Plan:} ``Calculate pairwise distances between atoms''
+  \item
+    \textbf{Act:} Writes script using appropriate libraries
+  \item
+    \textbf{Observe:} Sees \texttt{MemoryError}
+  \item
+    \textbf{Debugs and Refines:} ``Switch to sparse matrix''
+  \end{enumerate}
+\item
+  \textbf{Why it matters:} Closes the feedback loop \emph{without human
+  intervention}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The AI Landscape (2026): Models \& Tools}
+\phantomsection\label{the-ai-landscape-2026-models-tools}
+\begin{block}{I. The Brains (The Intelligence)}
+\phantomsection\label{i.-the-brains-the-intelligence}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.1714}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2857}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.5429}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Tier
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Use Case
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Key Models (2026)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\textbf{Fast / General} & Autocomplete, simple refactors, speed &
+GPT-4o-2026, Claude 3.5 Haiku, Gemini 2.0 Flash \\
+\textbf{Thinking} & Hard logic, architecture, debugging & GPT-5.2 Think,
+DeepSeek R2, Claude 4.5 Sonnet \\
+\textbf{Pro / Frontier} & Complex maths, massive context & GPT-5.2 Pro,
+Gemini DeepThink, Claude 4.6 Opus \\
+\textbf{Open Weights} & Local / Private / Cheap & Llama 4, Mistral
+Large, DeepSeek V3, Kimi K2.5 \\
+\bottomrule\noalign{}
+\end{longtable}
+\end{block}
+
+\begin{block}{II. The Hands (The Agentic Tools)}
+\phantomsection\label{ii.-the-hands-the-agentic-tools}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2778}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4444}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2778}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Category
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Interface Mode
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Examples
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\textbf{IDE integrated} & ``Co-pilot'' / Chat Sidebar & Cursor, GitHub
+Copilot \\
+\textbf{Autonomous / CLI} & ``Go do this task'' & Cline, Claude Code,
+Gemini CLI, Codex CLI \\
+\textbf{Multi-Agent / Managers} & Architect / Orchestrator & Codex
+Desktop, Antigravity \\
+\bottomrule\noalign{}
+\end{longtable}
+\end{block}
+\end{frame}
+
+\begin{frame}{Key Insight: Be Specific about the \emph{Goal}, not the
+\emph{Syntax}}
+\phantomsection\label{key-insight-be-specific-about-the-goal-not-the-syntax}
+❌ Write a for loop that iterates through the list and calculates the
+mean
+
+✅ Implement an SIR epidemic model with transmission rate β and recovery
+rate γ
+
+The agent knows how to write loops. \textbf{You} know what an SIR model
+is.
+
+\textbf{Rule of Thumb:} - \textbf{Don't} micromanage the code (syntax) -
+\textbf{Do} micromanage the output (science/style)
+\end{frame}
+
+\begin{frame}{Tools We'll Use Today}
+\phantomsection\label{tools-well-use-today}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.4000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.6000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Tool
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Purpose
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\textbf{Agent-enabled IDE} & VS Code + agent integration (Cursor /
+Copilot / Codex Desktop / etc.) \\
+\textbf{LLM backend} & OpenAI / Anthropic / Google / open-weight local
+models \\
+\textbf{Python + SciPy stack} & numpy, scipy, pandas, matplotlib \\
+\bottomrule\noalign{}
+\end{longtable}
+
+\note{These tools are accessible to anyone with basic coding
+familiarity.}
+\end{frame}
+
+\begin{frame}{Part 2: From Blank File to Prototype}
+\phantomsection\label{part-2-from-blank-file-to-prototype}
+We'll build a simple epidemiological simulation \textbf{from scratch}.
+
+\textbf{Live Demo Ahead!} 🎬
+\end{frame}
+
+\begin{frame}{The Challenge: Our Goal Today}
+\phantomsection\label{the-challenge-our-goal-today}
+\textbf{Remember the pandemic?} The famous \textbf{R number}?
+
+We want to simulate that spread.
+
+\[ \text{Susceptible} \rightarrow \text{Infected} \rightarrow \text{Recovered} \]
+
+\textbf{The Mission:}
+
+\begin{enumerate}
+\tightlist
+\item
+  \textbf{Build} this simulation code from scratch.
+\item
+  \textbf{Visualise} the outbreak.
+\item
+  \textbf{Analyse} it with data.
+\end{enumerate}
+
+\emph{\ldots without writing the code ourselves.}
+\end{frame}
+
+\begin{frame}{The Math Behind the Model}
+\phantomsection\label{the-math-behind-the-model}
+\begin{columns}[T]
+\begin{column}{0.6\linewidth}
+We want to go from \textbf{blank file} to \textbf{working simulation} of
+a pandemic (SIR model).
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{S}: Susceptible
+\item
+  \textbf{I}: Infected
+\item
+  \textbf{R}: Recovered
+\item
+  \textbf{N}: Total population (constant)
+\end{itemize}
+
+We will build this \emph{live} to demonstrate the power of
+\textbf{Coding Agents}.
+\end{column}
+
+\begin{column}{0.4\linewidth}
+\[
+\begin{aligned}
+\frac{dS}{dt} &= -\beta \frac{S I}{N} \\
+\frac{dI}{dt} &= \beta \frac{S I}{N} - \gamma I \\
+\frac{dR}{dt} &= \gamma I
+\end{aligned}
+\]
+\end{column}
+
+\textbf{The ``R Number'' (\(R_0\)):}
+
+\[ R_0 = \frac{\beta}{\gamma} \]
+
+\begin{itemize}
+\tightlist
+\item
+  If \(R_0 > 1\): Epidemic grows 📈
+\item
+  If \(R_0 < 1\): Epidemic dies out 📉
+\end{itemize}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Prompt 1: Project Initialization}
+\phantomsection\label{prompt-1-project-initialization}
+Create a Python project structure for simulating an SIR epidemic model.
+Include a main simulation script, a module for the model equations, and
+a visualization script. Set out the structure without implementing any
+details.
+
+Let's see what the agent produces\ldots{}
+\end{frame}
+
+\begin{frame}{Prompt 2: Implement the Model}
+\phantomsection\label{prompt-2-implement-the-model}
+Implement the SIR model differential equations using the standard
+population-normalized form (β\emph{S}I/N). The model should track
+Susceptible, Infected, and Recovered populations over time. Use
+scipy.integrate.odeint for integration.
+\end{frame}
+
+\begin{frame}{Prompt 3: Visualization}
+\phantomsection\label{prompt-3-visualization}
+Create a visualization that shows S, I, R curves over time. Add proper
+labels, legend, and a title. Use a clean, publication-ready style.
+\end{frame}
+
+\begin{frame}{Prompt 4: Explain \& Review}
+\phantomsection\label{prompt-4-explain-review}
+Look at the plot. Explain what is happening. What is the peak infected
+count and when does it occur?
+
+\emph{Key Insight:} The agent acts as a \textbf{tutor} and
+\textbf{reviewer}.
+\end{frame}
+
+\begin{frame}{Talking to AI with Scientific Intent}
+\phantomsection\label{talking-to-ai-with-scientific-intent}
+\textbf{Effective prompting strategies:}
+
+\begin{enumerate}[<+->]
+\tightlist
+\item
+  \textbf{State the scientific goal} first, not the implementation
+\item
+  \textbf{Use domain terminology} --- the model understands SIR, ODE,
+  etc.
+\item
+  \textbf{Provide constraints} --- ``use scipy'' or ``make it efficient
+  for large N''
+\item
+  \textbf{Iterate} --- refine based on initial output
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Part 3: Fitting Real Data}
+\phantomsection\label{part-3-fitting-real-data}
+\textbf{Live Demo!} 🎬\\
+We'll fit our SIR model to real pandemic data from Italy's first wave.
+\end{frame}
+
+\begin{frame}{The Data: Italy, February--May 2020}
+\phantomsection\label{the-data-italy-februarymay-2020}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Source:} Johns Hopkins CSSE COVID-19 Repository
+\item
+  \textbf{Period:} First wave (before vaccines, clear lockdown signal)
+\item
+  \textbf{Key event:} National lockdown on \textbf{March 9, 2020}
+\end{itemize}
+
+\emph{Can our simple SIR model capture a real pandemic?}
+\end{frame}
+
+\begin{frame}[fragile]{Prompt 1: Load Real Data}
+\phantomsection\label{prompt-1-load-real-data}
+Load the COVID-19 data for Italy from
+\texttt{data/covid\_italy\_first\_wave.csv}. Plot active infections over
+time. Add a vertical line for the lockdown date (March 9).
+\end{frame}
+
+\begin{frame}[fragile]{Prompt 2: Fit the SIR Model}
+\phantomsection\label{prompt-2-fit-the-sir-model}
+Create a function that fits our SIR model to the Italy data. Use
+\texttt{scipy.optimize.minimize} to find the best β and γ. Print the
+estimated R0.
+\end{frame}
+
+\begin{frame}{Prompt 3: Visualize and Critique}
+\phantomsection\label{prompt-3-visualize-and-critique}
+Plot the best-fit model against the real data. Critically evaluate:
+where does the simple SIR assumption break down?
+
+\emph{Key insight:} The lockdown changed β --- our constant-β model
+can't capture that!
+\end{frame}
+
+\begin{frame}{Interpret the Fitted Parameters}
+\phantomsection\label{interpret-the-fitted-parameters}
+Based on the optimized β and γ: What is R₀? How does it compare to
+published estimates (2.5-3.5)? What is the implied infection duration
+(1/γ)?
+
+\emph{Teaching point:} R₀ depends on context; not an intrinsic property
+of the virus alone.
+\end{frame}
+
+\begin{frame}{Part 4: Going Beyond Basic SIR}
+\phantomsection\label{part-4-going-beyond-basic-sir}
+\begin{itemize}[<+->]
+\tightlist
+\item
+  \textbf{4.1 Time-Varying β:} Model the lockdown effect with piecewise
+  transmission
+\item
+  \textbf{4.2 Country Comparison:} Compare Italy vs South Korea response
+  strategies
+\item
+  \textbf{4.3 Uncertainty:} Bootstrap confidence intervals for R₀
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Prompt: Time-Varying Transmission}
+\phantomsection\label{prompt-time-varying-transmission}
+Modify the SIR model to use β\_pre before lockdown and β\_post after.
+Fit both values and compare R₀ before and after March 9.
+
+\emph{This captures what our constant-β model missed!}
+\end{frame}
+
+\begin{frame}{Prompt: Country Comparison}
+\phantomsection\label{prompt-country-comparison}
+Repeat the SIR fitting for South Korea. Create a side-by-side comparison
+with Italy. Which country had lower R₀? What strategies might explain
+this?
+
+\emph{South Korea used aggressive testing vs Italy's lockdown approach.}
+\end{frame}
+
+\begin{frame}{Prompt: Uncertainty Quantification}
+\phantomsection\label{prompt-uncertainty-quantification}
+Use bootstrap resampling to estimate 95\% confidence intervals for R₀.
+Visualize the uncertainty as a shaded band around the model curve.
+
+\textbf{Point estimates without uncertainty can be misleading!}
+\end{frame}
+
+\begin{frame}{Part 5: Let the AI Write the Report}
+\phantomsection\label{part-5-let-the-ai-write-the-report}
+``Write a scientific report summarizing our COVID-19 SIR analysis.
+Include Introduction, Methods, Results with figures, Discussion of
+limitations, and Conclusion.''
+\end{frame}
+
+\begin{frame}{Prompt: Peer Review}
+\phantomsection\label{prompt-peer-review}
+``Act as a peer reviewer. Evaluate the report for clarity, accuracy, and
+completeness. Provide constructive feedback.''
+
+\emph{The AI can both write AND review!}
+\end{frame}
+
+\begin{frame}{Part 6: Outlook (2026)}
+\phantomsection\label{part-6-outlook-2026}
+\begin{itemize}[<+->]
+\tightlist
+\item
+  \textbf{2022}: Copy-pasting fragments
+\item
+  \textbf{2026}: Orchestrating \textbf{Agents}
+\item
+  \textbf{New Skills}: Managing \textbf{MCP Servers}, defining Agent
+  Skills
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Coming Up Next}
+\phantomsection\label{coming-up-next}
+\textbf{In Two Weeks:} ``Building Custom Agent Skills'' (Connecting
+agents to your own databases and tools)
+
+\textbf{Today:} We focus on the \emph{practical application}.
+\end{frame}
+
+\begin{frame}{Wrap-Up: What We Covered}
+\phantomsection\label{wrap-up-what-we-covered}
+\begin{itemize}[<+->]
+\tightlist
+\item
+  ✅ Coding agents as scientific collaborators
+\item
+  ✅ Prompting with \emph{scientific intent}, not syntax
+\item
+  ✅ Building simulation code from scratch
+\item
+  ✅ Fitting models to real COVID-19 data
+\item
+  ✅ AI-assisted scientific report writing
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Discussion Points}
+\phantomsection\label{discussion-points}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.3043}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.6957}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Topic
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Teaching Point
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\textbf{Model-data mismatch} & SIR is too simple for COVID-19; useful
+for intuition \\
+\textbf{Data quality} & ``Recovered'' poorly reported; active cases are
+estimates \\
+\textbf{Interventions} & Constant β fails when behavior changes \\
+\textbf{R₀ interpretation} & Depends on context, not intrinsic to
+virus \\
+\textbf{Extensions} & SEIR, age structure, spatial models \\
+\bottomrule\noalign{}
+\end{longtable}
+\end{frame}
+
+\begin{frame}{Key Takeaways}
+\phantomsection\label{key-takeaways}
+\begin{enumerate}
+\tightlist
+\item
+  \textbf{You bring domain expertise} --- the AI brings coding fluency
+\item
+  \textbf{Iterate quickly} --- first draft is rarely perfect
+\item
+  \textbf{Trust but verify} --- always review the generated code
+\item
+  \textbf{Scientific problems need scientific prompts}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]{Resources}
+\phantomsection\label{resources}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{This repo}:
+  \texttt{github.com/fab321/COSIMO\_IDAI\_Agentic\_Coding\_Tutorial}
+\item
+  \textbf{Prompts used today}:
+  \texttt{planning/contents\_brainstorming.md} §6
+\item
+  \textbf{Example outputs}: \texttt{examples/} directory
+\end{itemize}
+
+\note{Materials will be available after the seminar.}
+\end{frame}
+
+\begin{frame}[fragile]{Data Source Citation}
+\phantomsection\label{data-source-citation}
+\textbf{JHU CSSE COVID-19 Dataset}
+
+\begin{quote}
+Dong E, Du H, Gardner L. An interactive web-based dashboard to track
+COVID-19 in real time. \emph{Lancet Inf Dis.} 2020;20(5):533-534.
+\end{quote}
+
+Repository: \texttt{github.com/CSSEGISandData/COVID-19}
+\end{frame}
+
+\begin{frame}{Questions?}
+\phantomsection\label{questions}
+🎤 \textbf{Open Discussion}
+
+Networking lunch follows at 12:00!
+\end{frame}
+
+\begin{frame}{Thank You!}
+\phantomsection\label{thank-you}
+Fabian Spill\\
+f.spill@bham.ac.uk
+\end{frame}
+
+
+
+
+\end{document}

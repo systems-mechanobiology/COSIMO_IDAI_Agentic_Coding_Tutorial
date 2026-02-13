@@ -87,7 +87,7 @@ Target audience: PhD students, postdocs, PIs, and RSEs across all disciplines.
 
 ::: {.warning-box}
 **University Policy (as of Feb 2026):** Only **M365 Copilot** is officially supported.
-Tests for compliant advanced models are underway.
+Tests for compliant advanced models are underway - Nicola Wilkin and Tim Packwood will update you at the end of this session!
 :::
 
 **This session is for information only.**
@@ -350,7 +350,7 @@ Create a function that fits our SIR model to the Italy data. Use `scipy.optimize
 ## Prompt 3: Visualize and Critique
 
 ::: {.prompt-box}
-Plot the best-fit model against the real data. Critically evaluate: where does the simple SIR assumption break down?
+Plot the best-fit model against the real data. 
 :::
 
 *Key insight:* The lockdown changed β — our constant-β model can't capture that!
@@ -360,7 +360,7 @@ Plot the best-fit model against the real data. Critically evaluate: where does t
 ## Interpret the Fitted Parameters
 
 ::: {.prompt-box}
-Based on the optimized β and γ: What is R₀? How does it compare to published estimates (2.5-3.5)? What is the implied infection duration (1/γ)?
+Based on the optimized β and γ: What is R₀? How does it compare to published estimates (2.5-3.5)? What is the implied infection duration (1/γ)?Critically evaluate: where does the simple SIR assumption break down?
 :::
 
 *Teaching point:* R₀ depends on context; not an intrinsic property of the virus alone.

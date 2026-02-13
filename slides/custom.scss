@@ -136,3 +136,11 @@ $body-bg: #ffffff;
   color: $uob-grey;
   font-size: 0.6em;
 }
+
+// Widescreen PDF Print Fix
+@media print {
+  @page {
+    size: 1600px 900px;
+    margin: 0;
+  }
+}

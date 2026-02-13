@@ -1,0 +1,35 @@
+\frametitle{The Convergence: Coding Agents}
+\phantomsection\label{the-convergence-coding-agents}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Interaction:} Agent has \textbf{terminal}/\textbf{ide} and
+  \textbf{file access}
+\item
+  \textbf{The Paradigm Shift:}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Old: REPL (Read-Eval-Print) controlled by \textbf{Human}
+  \item
+    New: \textbf{Plan-Act-Observe} controlled by \textbf{Agent}
+  \end{itemize}
+\item
+  \textbf{The Loop:}
+
+  \begin{enumerate}
+  \tightlist
+  \item
+    \textbf{Plan:} ``Calculate pairwise distances between atoms''
+  \item
+    \textbf{Act:} Writes script using appropriate libraries
+  \item
+    \textbf{Observe:} Sees \texttt{MemoryError}
+  \item
+    \textbf{Debugs and Refines:} ``Switch to sparse matrix''
+  \end{enumerate}
+\item
+  \textbf{Why it matters:} Closes the feedback loop \emph{without human
+  intervention}
+\end{itemize}
